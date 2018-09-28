@@ -1,0 +1,27 @@
+//
+//  Appearance.swift
+//  chute
+//
+//  Created by David Doswell on 9/27/18.
+//  Copyright © 2018 David Doswell. All rights reserved.
+//
+
+import UIKit
+
+enum Appearance {
+    
+    static var customBackground = UIColor(red: 135.0/255.0, green: 206.0/255.0, blue: 235.0/255.0, alpha: 1.0)
+    
+    static func setUpAppearance() {
+        
+        UILabel.appearance().tintColor = Appearance.customBackground
+        UITextField.appearance().tintColor = Appearance.customBackground
+    }
+    
+    static func applicationFont(with textStyle: UIFont.TextStyle, pointSize: CGFloat) -> UIFont {
+        let result = UIFont(name: "REZ", size: pointSize)!
+        
+        return UIFontMetrics(forTextStyle: textStyle).scaledFont(for: result)
+    }
+    
+}
