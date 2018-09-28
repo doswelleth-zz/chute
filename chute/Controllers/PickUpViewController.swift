@@ -5,6 +5,7 @@
 //  Created by David Doswell on 9/27/18.
 //  Copyright © 2018 David Doswell. All rights reserved.
 //
+// Icons by Freepik & PongsakornRed
 
 import UIKit
 import UserNotifications
@@ -25,7 +26,7 @@ class PickUpViewController: UIViewController {
             self.collectionView.reloadData()
         }
     }
-    
+   
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let pickUpVC = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -45,9 +46,7 @@ class PickUpViewController: UIViewController {
         
         setUpCollectionView()
         setUpNavBar()
-        
-        self.title = navigationTitle
-        
+                
         DispatchQueue.main.async {
             self.sortedPickUps = self.pickUpController.pickUps.sorted(by: { $0.timestamp > $1.timestamp })
             self.pickUpController.decode()
@@ -55,22 +54,35 @@ class PickUpViewController: UIViewController {
         }
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.backgroundColor = UIColor(patternImage: UIImage(named: "Background")!)
         collectionView.register(PickUpCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
     
     func setUpNavBar() {
+        let left = UIButton(type: .custom)
+        left.setImage(UIImage(named: "Questions"), for: .normal)
+        left.widthAnchor.constraint(equalToConstant: 40.0).isActive = true
+        left.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
+        left.contentMode = .scaleAspectFill
+        left.adjustsImageWhenHighlighted = false
+        left.addTarget(self, action: #selector(leftBarButtonTap(sender:)), for: .touchUpInside)
+        
         let right = UIButton(type: .custom)
         right.setImage(UIImage(named: "PickUp"), for: .normal)
-        right.widthAnchor.constraint(equalToConstant: 30.0).isActive = true
-        right.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
+        right.widthAnchor.constraint(equalToConstant: 40.0).isActive = true
+        right.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
+        right.layer.cornerRadius = 20
+        right.clipsToBounds = true
         right.contentMode = .scaleAspectFill
         right.adjustsImageWhenHighlighted = false
         right.addTarget(self, action: #selector(rightBarButtonTap(sender:)), for: .touchUpInside)
-        
+
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: left)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: right)
         
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.tintColor = .black
+        self.title = String.dashboardTitle
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationItem.hidesBackButton = true
     }
     
     @objc private func rightBarButtonTap(sender: UIButton) {
@@ -78,8 +90,13 @@ class PickUpViewController: UIViewController {
         vc.pickUpController = pickUpController
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    @objc private func leftBarButtonTap(sender: UIButton) {
+        let vc = PickUpInfoViewController()
+        self.navigationController?.modalPresentationStyle = .currentContext
+        self.present(vc, animated: true, completion: nil)
+    }
 }
-
 
 extension PickUpViewController: UICollectionViewDataSource {
     
@@ -168,11 +185,11 @@ extension PickUpViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: view.frame.size.width, height: 200)
+        return CGSize(width: view.frame.size.width, height: 250)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         
-        return 30.0
+        return 20.0
     }
 }

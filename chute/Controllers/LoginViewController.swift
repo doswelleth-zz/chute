@@ -47,20 +47,15 @@ class LoginViewController: UIViewController {
         signInButton.addTarget(self, action: #selector(signInButtonTapped(sender:)), for: .touchUpInside)
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         
-        
+        hideKeyboardWhenTappedAround()
     }
-    
-    // Dismiss keyboard
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) { self.view.endEditing(true) }
     
     var context: NSManagedObjectContext?
     
-    // Keychain
     var passwordItems: [KeychainPasswordItem] = []
     let signUpButtonTag = 0
     let signInButtonTag = 1
     
-    // Constants
     let logoImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: String.logoImageName)
@@ -204,7 +199,7 @@ class LoginViewController: UIViewController {
     
     private func saveUserCredentials() {
         let context = CoreDataStack.shared.mainContext
-        let entity = NSEntityDescription.entity(forEntityName: "chute", in: context)
+        let entity = NSEntityDescription.entity(forEntityName: "Chute", in: context)
         let newUser = NSManagedObject(entity: entity!, insertInto: context)
         newUser.setValue(usernameTextField.text!, forKey: String.username)
         newUser.setValue(passwordTextField.text!, forKey: String.password)
@@ -222,6 +217,7 @@ class LoginViewController: UIViewController {
     }
     
     // Touch ID
+    
     let touchIDButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle(String.touchIDTitle, for: .normal)

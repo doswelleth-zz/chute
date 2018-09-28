@@ -13,7 +13,9 @@ enum Appearance {
     static var customBackground = UIColor(red: 135.0/255.0, green: 206.0/255.0, blue: 235.0/255.0, alpha: 1.0)
     
     static func setUpAppearance() {
-        
+        UINavigationBar.appearance().barTintColor = Appearance.customBackground
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         UILabel.appearance().tintColor = Appearance.customBackground
         UITextField.appearance().tintColor = Appearance.customBackground
     }

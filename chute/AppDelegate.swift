@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
     
@@ -27,9 +28,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationController.navigationBar.isHidden = true
         
         Appearance.setUpAppearance()
+        
         _ = Appearance.applicationFont(with: UIFont.TextStyle(rawValue: "REZ"), pointSize: 50)
         
+        let center = UNUserNotificationCenter.current()
+        center.delegate = self
+        center.requestAuthorization(options: [. alert, .sound]) { (granted, error) in
+            if let error = error {
+                NSLog("There was an error requesting authorization: \(error)")
+                return
+            }
+            NSLog("Notifications granted \(granted)")
+        }
+        
         return true
+    }
+    
+    func application(_ application: UIApplication, shouldSaveApplicationState coder: NSCoder) -> Bool {
+        return true
+    }
+    
+    func application(_ application: UIApplication, shouldRestoreApplicationState coder: NSCoder) -> Bool {
+        return true
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        completionHandler([.alert, .sound])
     }
 }
 
