@@ -32,7 +32,7 @@ class PickUpInfoViewController: UIViewController {
         textView.text = String.onboardingInfo
         textView.textColor = .white
         textView.textAlignment = .justified
-        textView.font = UIFont.systemFont(ofSize: 18)
+        textView.font = UIFont.systemFont(ofSize: 17)
         textView.isScrollEnabled = true
         textView.isEditable = false
         textView.translatesAutoresizingMaskIntoConstraints = false
@@ -63,14 +63,14 @@ class PickUpInfoViewController: UIViewController {
         view.addSubview(onboardTextView)
         view.addSubview(doneButton)
        
-        faqLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
+        faqLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 30).isActive = true
         faqLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         faqLabel.widthAnchor.constraint(equalToConstant: view.frame.size.width).isActive = true
         faqLabel.heightAnchor.constraint(equalToConstant: 76).isActive = true
         
         onboardTextView.topAnchor.constraint(equalTo: faqLabel.bottomAnchor, constant: 20).isActive = true
         onboardTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        onboardTextView.widthAnchor.constraint(equalToConstant: 400).isActive = true
+        onboardTextView.widthAnchor.constraint(equalToConstant: 350).isActive = true
         onboardTextView.heightAnchor.constraint(equalToConstant: 400).isActive = true
         
         doneButton.topAnchor.constraint(equalTo: onboardTextView.bottomAnchor, constant: 40).isActive = true

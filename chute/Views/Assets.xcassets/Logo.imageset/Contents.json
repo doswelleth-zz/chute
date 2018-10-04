@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "iphone",
-      "filename" : "Logo-Label.png",
+      "filename" : "whitebogo.png",
       "scale" : "1x"
     },
     {
       "idiom" : "iphone",
-      "filename" : "Logo-Label-1.png",
+      "filename" : "whitebogo-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "iphone",
-      "filename" : "Logo-Label-2.png",
+      "filename" : "whitebogo-2.png",
       "scale" : "3x"
     }
   ],

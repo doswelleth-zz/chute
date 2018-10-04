@@ -24,7 +24,7 @@ class PickUpCell: UICollectionViewCell {
     
     let timeStampLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = .white
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -37,7 +37,7 @@ class PickUpCell: UICollectionViewCell {
     let nameConstantLabel: UILabel = {
         let label = UILabel()
         label.text = "Name"
-        label.textColor = .black
+        label.textColor = .white
         label.textAlignment = .left
         label.font = UIFont.boldSystemFont(ofSize: 18)
         label.isUserInteractionEnabled = false
@@ -47,7 +47,7 @@ class PickUpCell: UICollectionViewCell {
     
     let nameLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = .white
         label.textAlignment = .right
         label.font = UIFont.systemFont(ofSize: 17)
         label.isUserInteractionEnabled = false
@@ -58,7 +58,7 @@ class PickUpCell: UICollectionViewCell {
     let quantityConstantLabel: UILabel = {
         let label = UILabel()
         label.text = "Quantity"
-        label.textColor = .black
+        label.textColor = .white
         label.textAlignment = .left
         label.font = UIFont.boldSystemFont(ofSize: 18)
         label.isUserInteractionEnabled = false
@@ -68,7 +68,7 @@ class PickUpCell: UICollectionViewCell {
     
     let quantityLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = .white
         label.textAlignment = .right
         label.font = UIFont.boldSystemFont(ofSize: 17)
         label.isUserInteractionEnabled = false
@@ -79,7 +79,7 @@ class PickUpCell: UICollectionViewCell {
     let hasChuteBagConstantLabel: UILabel = {
         let label = UILabel()
         label.text = "Has a Chute Bag"
-        label.textColor = .black
+        label.textColor = .white
         label.textAlignment = .left
         label.font = UIFont.boldSystemFont(ofSize: 18)
         label.isUserInteractionEnabled = false
@@ -89,7 +89,7 @@ class PickUpCell: UICollectionViewCell {
     
     let hasChuteBagLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = .white
         label.textAlignment = .right
         label.font = UIFont.boldSystemFont(ofSize: 17)
         label.isUserInteractionEnabled = false
@@ -100,7 +100,7 @@ class PickUpCell: UICollectionViewCell {
     let hasChuteExpressConstantLabel: UILabel = {
         let label = UILabel()
         label.text = "Has Chute Express"
-        label.textColor = .black
+        label.textColor = .white
         label.textAlignment = .left
         label.font = UIFont.boldSystemFont(ofSize: 18)
         label.isUserInteractionEnabled = false
@@ -110,7 +110,7 @@ class PickUpCell: UICollectionViewCell {
     
     let hasChuteExpressLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .red
+        label.textColor = .white
         label.textAlignment = .right
         label.font = UIFont.boldSystemFont(ofSize: 17)
         label.isUserInteractionEnabled = false
@@ -121,7 +121,7 @@ class PickUpCell: UICollectionViewCell {
     let identifierLabel: UILabel = {
         let label = UILabel()
         label.text = UUID().uuidString
-        label.textColor = .lightGray
+        label.textColor = .white
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -129,7 +129,7 @@ class PickUpCell: UICollectionViewCell {
     }()
     
     func setUpViews() {
-        backgroundColor = .white
+        backgroundColor = Appearance.customBackground
         addSubview(timeStampLabel)
         addSubview(nameConstantLabel)
         addSubview(nameLabel)
@@ -142,7 +142,7 @@ class PickUpCell: UICollectionViewCell {
         addSubview(identifierLabel)
         
         layer.borderWidth = 0.5
-        layer.borderColor = Appearance.customBackground.cgColor
+        layer.borderColor = UIColor.white.cgColor
         
         formatter.timeStyle = .medium
         formatter.dateStyle = .medium
@@ -169,14 +169,14 @@ class PickUpCell: UICollectionViewCell {
         quantityConstantLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
         quantityLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 20).isActive = true
-         quantityLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -5).isActive = true
+        quantityLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -5).isActive = true
         quantityLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
         quantityLabel.heightAnchor.constraint(equalToConstant: 18).isActive = true
         
         hasChuteBagConstantLabel.topAnchor.constraint(equalTo: quantityConstantLabel.bottomAnchor, constant: 20).isActive = true
         hasChuteBagConstantLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 10).isActive = true
         hasChuteBagConstantLabel.widthAnchor.constraint(equalToConstant: 250).isActive = true
-        hasChuteBagConstantLabel.heightAnchor.constraint(equalToConstant: 18).isActive = true
+        hasChuteBagConstantLabel.heightAnchor.constraint(equalToConstant: 19).isActive = true
         
         hasChuteBagLabel.topAnchor.constraint(equalTo: quantityLabel.bottomAnchor, constant: 20).isActive = true
          hasChuteBagLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -5).isActive = true

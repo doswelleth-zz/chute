@@ -14,8 +14,9 @@ enum Appearance {
     
     static func setUpAppearance() {
         UINavigationBar.appearance().barTintColor = Appearance.customBackground
-        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().tintColor = Appearance.customBackground
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        
         UILabel.appearance().tintColor = Appearance.customBackground
         UITextField.appearance().tintColor = Appearance.customBackground
     }

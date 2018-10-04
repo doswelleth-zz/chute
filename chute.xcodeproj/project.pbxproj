@@ -24,6 +24,7 @@
 		491F6E6C215DE80300AECA84 /* PickUpDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491F6E6B215DE80300AECA84 /* PickUpDetailViewController.swift */; };
 		492E7C0E215EBCB900255A5C /* Chute.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 492E7C0C215EBCB900255A5C /* Chute.xcdatamodeld */; };
 		492E7C10215ED2C000255A5C /* PickUpInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492E7C0F215ED2C000255A5C /* PickUpInfoViewController.swift */; };
+		492E7C122160235D00255A5C /* SubscribeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492E7C112160235D00255A5C /* SubscribeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		491F6E6B215DE80300AECA84 /* PickUpDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpDetailViewController.swift; sourceTree = "<group>"; };
 		492E7C0D215EBCB900255A5C /* Chute.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Chute.xcdatamodel; sourceTree = "<group>"; };
 		492E7C0F215ED2C000255A5C /* PickUpInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpInfoViewController.swift; sourceTree = "<group>"; };
+		492E7C112160235D00255A5C /* SubscribeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				491F6E4E215DD8AB00AECA84 /* PickUpViewController.swift */,
 				491F6E6B215DE80300AECA84 /* PickUpDetailViewController.swift */,
 				492E7C0F215ED2C000255A5C /* PickUpInfoViewController.swift */,
+				492E7C112160235D00255A5C /* SubscribeViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 				491F6E51215DD8EF00AECA84 /* Appearance.swift in Sources */,
 				491F6E65215DE10100AECA84 /* KeychainPasswordItem.swift in Sources */,
 				491F6E38215DD7BF00AECA84 /* AppDelegate.swift in Sources */,
+				492E7C122160235D00255A5C /* SubscribeViewController.swift in Sources */,
 				492E7C0E215EBCB900255A5C /* Chute.xcdatamodeld in Sources */,
 				491F6E62215DE09800AECA84 /* String.swift in Sources */,
 				491F6E6C215DE80300AECA84 /* PickUpDetailViewController.swift in Sources */,
