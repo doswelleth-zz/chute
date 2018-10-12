@@ -80,7 +80,7 @@ class PickUpViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: left)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: right)
         
-        self.title = String.dashboardTitle
+        self.title = String.ordersTitle
         navigationController?.navigationBar.isHidden = false
         navigationController?.navigationItem.hidesBackButton = true
     }

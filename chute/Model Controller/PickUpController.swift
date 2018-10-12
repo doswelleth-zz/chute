@@ -14,8 +14,8 @@ class PickUpController {
     
     private(set) var pickUps: [PickUp] = []
     
-    func createPickUp(with name: String, quantity: String, hasChuteBag: String, hasExpress: String, identifier: String, timestamp: Date) {
-        let pickUp = PickUp(name: name, quantity: quantity, hasChuteBag: hasChuteBag, hasExpress: hasExpress, identifier: identifier, timestamp: timestamp)
+    func createPickUp(with name: String, address: String, cityStateZip: String, quantity: String, hasChuteBag: String, hasExpress: String, identifier: String, timestamp: Date) {
+        let pickUp = PickUp(name: name, address: address, cityStateZip: cityStateZip, quantity: quantity, hasChuteBag: hasChuteBag, hasExpress: hasExpress, identifier: identifier, timestamp: timestamp)
         pickUps.append(pickUp)
         encode()
     }

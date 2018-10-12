@@ -10,6 +10,8 @@ import Foundation
 
 struct PickUp: Codable, Equatable {
     let name: String
+    let address: String
+    let cityStateZip: String
     let quantity: String
     let hasChuteBag: String
     let hasExpress: String

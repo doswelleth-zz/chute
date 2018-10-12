@@ -41,7 +41,7 @@ extension String {
     
     // Pick Up (Dashboard)
     
-    static var dashboardTitle = "Dashboard"
+    static var ordersTitle = "Orders"
     static var customizationLabel = "Customization"
     static var informationLabel = "Information"
     static var confirmationLabel = "Confirmation"
@@ -91,9 +91,15 @@ extension String {
     
     // Subscription
     
+    static var navigationItemTitle = "◀︎"
+    static var subscribeButtonTitle = "Subscribe $19.99/mo."
+    static var welcomeToChutePlusLabelText = "Unlimited 2-Day Turnaround Pick Ups"
+    static var termsOfServiceTitle = "Terms of Service"
+    static var privacyButtonTitle = "Privacy Policy"
+    
     static var subscriptionText = """
 
-    Payment of $4.99 will be charged to the user's iTunes account at confirmation of purchase.
+    Payment of $19.99 will be charged to the user's iTunes account at confirmation of purchase.
     
     Subscription to Chute Plus automatically renews unless auto-renew is turned off at least 24 hours before the end of the current period.
     

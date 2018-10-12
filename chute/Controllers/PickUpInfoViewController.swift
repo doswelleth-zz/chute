@@ -63,7 +63,7 @@ class PickUpInfoViewController: UIViewController {
         view.addSubview(onboardTextView)
         view.addSubview(doneButton)
        
-        faqLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 30).isActive = true
+        faqLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
         faqLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         faqLabel.widthAnchor.constraint(equalToConstant: view.frame.size.width).isActive = true
         faqLabel.heightAnchor.constraint(equalToConstant: 76).isActive = true

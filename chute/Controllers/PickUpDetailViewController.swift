@@ -67,6 +67,28 @@ class PickUpDetailViewController: UIViewController, UITextFieldDelegate {
         return textField
     }()
     
+    let addressTextField: UITextField = {
+        let textField = UITextField()
+        textField.textColor = .white
+        textField.textAlignment = .left
+        textField.attributedPlaceholder = NSAttributedString(string: "Address", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        textField.tintColor = .white
+        textField.font = UIFont.boldSystemFont(ofSize: 20)
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
+    let cityStateZipTextField: UITextField = {
+        let textField = UITextField()
+        textField.textColor = .white
+        textField.textAlignment = .left
+        textField.attributedPlaceholder = NSAttributedString(string: "City State and Zip", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        textField.tintColor = .white
+        textField.font = UIFont.boldSystemFont(ofSize: 20)
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
     let identifierLabel: UILabel = {
         let label = UILabel()
         label.text = UUID().uuidString
@@ -101,16 +123,16 @@ class PickUpDetailViewController: UIViewController, UITextFieldDelegate {
     }()
     
     @objc private func scheduleButtonTap(sender: UIButton) {
-        if nameTextField.text!.isEmpty || quantityTextField.text!.isEmpty || hasChuteBagTextField.text!.isEmpty || hasExpressTextField.text!.isEmpty {
+        if nameTextField.text!.isEmpty || addressTextField.text!.isEmpty || cityStateZipTextField.text!.isEmpty || quantityTextField.text!.isEmpty || hasChuteBagTextField.text!.isEmpty || hasExpressTextField.text!.isEmpty {
             let alert = UIAlertController(title: "Error", message: "Please enter all fields correctly", preferredStyle: .alert)
             let action = UIAlertAction(title: "Okay", style: .default) { (action) in
             }
             alert.addAction(action)
             present(alert, animated: true, completion: nil)
         } else {
-            guard let name = nameTextField.text, let quantity = quantityTextField.text, let hasChuteBag = hasChuteBagTextField.text, let hasChuteExpress = hasExpressTextField.text, let identifier = identifierLabel.text else { return }
+            guard let name = nameTextField.text, let address = addressTextField.text, let cityStateZip = cityStateZipTextField.text, let quantity = quantityTextField.text, let hasChuteBag = hasChuteBagTextField.text, let hasChuteExpress = hasExpressTextField.text, let identifier = identifierLabel.text else { return }
             
-            pickUpController?.createPickUp(with: name, quantity: quantity, hasChuteBag: hasChuteBag, hasExpress: hasChuteExpress, identifier: identifier, timestamp: Date())
+            pickUpController?.createPickUp(with: name, address: address, cityStateZip: cityStateZip, quantity: quantity, hasChuteBag: hasChuteBag, hasExpress: hasChuteExpress, identifier: identifier, timestamp: Date())
           
             sendNotification()
 
@@ -140,7 +162,9 @@ class PickUpDetailViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUpNavBar()
+        setUpLeftNavBar()
+        setUpRightNavBar()
+        
         setUpViews()
         
         self.title = "Order a Pick Up"
@@ -149,7 +173,25 @@ class PickUpDetailViewController: UIViewController, UITextFieldDelegate {
         hideKeyboardWhenTappedAround()
     }
     
-    func setUpNavBar() {
+    private func setUpLeftNavBar() {
+        let left = UIButton(type: .custom)
+        left.setTitle(String.navigationItemTitle, for: .normal)
+        left.setTitleColor(.white, for: .normal)
+        left.titleLabel?.font = UIFont.systemFont(ofSize: 30)
+        left.widthAnchor.constraint(equalToConstant: 44.0).isActive = true
+        left.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
+        left.layer.masksToBounds = true
+        left.contentMode = .scaleAspectFill
+        left.addTarget(self, action: #selector(leftBarButtonTapped(sender:)), for: .touchUpInside)
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: left)
+    }
+    
+    @objc private func leftBarButtonTapped(sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func setUpRightNavBar() {
         let right = UIButton(type: .custom)
         right.setImage(UIImage(named: "Subscribe"), for: .normal)
         right.layer.cornerRadius = 20
@@ -164,8 +206,7 @@ class PickUpDetailViewController: UIViewController, UITextFieldDelegate {
     
     @objc private func rightBarButtonTap(sender: UIButton) {
         let vc = SubscribeViewController()
-        self.navigationController?.modalPresentationStyle = .currentContext
-        present(vc, animated: true, completion: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func setUpViews() {
@@ -175,6 +216,8 @@ class PickUpDetailViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(quantityTextField)
         view.addSubview(hasChuteBagTextField)
         view.addSubview(hasExpressTextField)
+        view.addSubview(addressTextField)
+        view.addSubview(cityStateZipTextField)
         view.addSubview(identifierLabel)
         view.addSubview(scheduleButton)
         view.addSubview(laundryImage)
@@ -188,6 +231,8 @@ class PickUpDetailViewController: UIViewController, UITextFieldDelegate {
         quantityTextField.delegate = self
         hasChuteBagTextField.delegate = self
         hasExpressTextField.delegate = self
+        addressTextField.delegate = self
+        cityStateZipTextField.delegate = self
         
         timeStampLabel.text = formatter.string(from: date)
         
@@ -201,7 +246,17 @@ class PickUpDetailViewController: UIViewController, UITextFieldDelegate {
         nameTextField.widthAnchor.constraint(equalToConstant: 350).isActive = true
         nameTextField.heightAnchor.constraint(equalToConstant: 35).isActive = true
         
-        quantityTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 10).isActive = true
+        addressTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 10).isActive = true
+        addressTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        addressTextField.widthAnchor.constraint(equalToConstant: 350).isActive = true
+        addressTextField.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        
+        cityStateZipTextField.topAnchor.constraint(equalTo: addressTextField.bottomAnchor, constant: 10).isActive = true
+        cityStateZipTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        cityStateZipTextField.widthAnchor.constraint(equalToConstant: 350).isActive = true
+        cityStateZipTextField.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        
+        quantityTextField.topAnchor.constraint(equalTo: cityStateZipTextField.bottomAnchor, constant: 10).isActive = true
         quantityTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
         quantityTextField.widthAnchor.constraint(equalToConstant: 100).isActive = true
         quantityTextField.heightAnchor.constraint(equalToConstant: 35).isActive = true
