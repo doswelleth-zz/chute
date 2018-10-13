@@ -125,6 +125,12 @@ class PickUpDetailViewController: UIViewController, UITextFieldDelegate {
             guard let name = nameTextField.text, let address = addressTextField.text, let cityStateZip = cityStateZipTextField.text, let quantity = quantityTextField.text, let hasChuteBag = hasChuteBagTextField.text, let hasChuteExpress = hasExpressTextField.text, let identifier = identifierLabel.text else { return }
             
             pickUpController?.createPickUp(with: name, address: address, cityStateZip: cityStateZip, quantity: quantity, hasChuteBag: hasChuteBag, hasExpress: hasChuteExpress, identifier: identifier, timestamp: Date())
+            
+            pickUpController?.createFirebasePickUp(with: name, address: address, cityStateZip: cityStateZip, quantity: quantity, hasChuteBag: hasChuteBag, hasExpress: hasChuteExpress, identifier: identifier, timestamp: Date(), completion: { (error) in
+                if let error = error {
+                    NSLog("Error occured while creating a pickup: \(error)")
+                }
+            })
           
             sendNotification()
 

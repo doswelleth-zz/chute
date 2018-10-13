@@ -138,6 +138,11 @@ extension PickUpViewController: UICollectionViewDataSource {
             
             DispatchQueue.main.async {
                 self.pickUpController.delete(pickUp: pickUp)
+                self.pickUpController.deleteFirebasePickUp(pickUp: pickUp, completion: { (error) in
+                    if let error = error {
+                        NSLog("Error deleting pick up \(error)")
+                    }
+                })
                 self.sortedPickUps = self.pickUpController.pickUps.sorted(by: { $0.timestamp > $1.timestamp })
                 
                 self.collectionView.reloadData()
