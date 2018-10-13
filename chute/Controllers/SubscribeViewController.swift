@@ -90,11 +90,11 @@ class SubscribeViewController: UIViewController {
     }
     
     @objc private func termsOfServiceButtonTap(sender: UIButton) {
-//        termsOfServiceTap()
+        termsOfServiceTap()
     }
     
     @objc private func privacyButtonTap(sender: UIButton) {
-//        privacyButtonTap()
+        privacyButtonTap()
     }
     
     private func privacyButtonTap() {
@@ -186,15 +186,15 @@ class SubscribeViewController: UIViewController {
      
         welcomeToChutePlusImage.topAnchor.constraint(equalTo: subscribeButton.bottomAnchor, constant: 30).isActive = true
         welcomeToChutePlusImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        welcomeToChutePlusImage.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        welcomeToChutePlusImage.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        welcomeToChutePlusImage.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        welcomeToChutePlusImage.heightAnchor.constraint(equalToConstant: 50).isActive = true
 
-        welcomeToChutePlusLabel.topAnchor.constraint(equalTo: welcomeToChutePlusImage.bottomAnchor, constant: 30).isActive = true
+        welcomeToChutePlusLabel.topAnchor.constraint(equalTo: welcomeToChutePlusImage.bottomAnchor, constant: 20).isActive = true
         welcomeToChutePlusLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         welcomeToChutePlusLabel.widthAnchor.constraint(equalToConstant: 300).isActive = true
         welcomeToChutePlusLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
 
-        autoRenewMessageLabel.topAnchor.constraint(equalTo: welcomeToChutePlusLabel.bottomAnchor, constant: 30).isActive = true
+        autoRenewMessageLabel.topAnchor.constraint(equalTo: welcomeToChutePlusLabel.bottomAnchor, constant: 10).isActive = true
         autoRenewMessageLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         autoRenewMessageLabel.widthAnchor.constraint(equalToConstant: 350).isActive = true
         autoRenewMessageLabel.heightAnchor.constraint(equalToConstant: 250).isActive = true

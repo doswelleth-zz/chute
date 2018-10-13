@@ -25,6 +25,8 @@
 		492E7C0E215EBCB900255A5C /* Chute.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 492E7C0C215EBCB900255A5C /* Chute.xcdatamodeld */; };
 		492E7C10215ED2C000255A5C /* PickUpInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492E7C0F215ED2C000255A5C /* PickUpInfoViewController.swift */; };
 		492E7C122160235D00255A5C /* SubscribeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492E7C112160235D00255A5C /* SubscribeViewController.swift */; };
+		49DAB0A02171699400E58966 /* IAPMembership.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DAB09F2171699400E58966 /* IAPMembership.swift */; };
+		49DAB0A2217169E600E58966 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DAB0A1217169E600E58966 /* IAPHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		492E7C0D215EBCB900255A5C /* Chute.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Chute.xcdatamodel; sourceTree = "<group>"; };
 		492E7C0F215ED2C000255A5C /* PickUpInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpInfoViewController.swift; sourceTree = "<group>"; };
 		492E7C112160235D00255A5C /* SubscribeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeViewController.swift; sourceTree = "<group>"; };
+		49DAB09F2171699400E58966 /* IAPMembership.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPMembership.swift; sourceTree = "<group>"; };
+		49DAB0A1217169E600E58966 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,7 @@
 				491F6E63215DE0C800AECA84 /* Keychain */,
 				491F6E66215DE15100AECA84 /* TouchID */,
 				491F6E5E215DDF9100AECA84 /* CoreData */,
+				49DAB09E2171696A00E58966 /* StoreKit */,
 				491F6E4C215DD7E600AECA84 /* Model */,
 				491F6E5B215DDAE900AECA84 /* Model Controller */,
 				491F6E4B215DD7E100AECA84 /* Views */,
@@ -175,6 +180,15 @@
 			path = TouchID;
 			sourceTree = "<group>";
 		};
+		49DAB09E2171696A00E58966 /* StoreKit */ = {
+			isa = PBXGroup;
+			children = (
+				49DAB09F2171699400E58966 /* IAPMembership.swift */,
+				49DAB0A1217169E600E58966 /* IAPHelper.swift */,
+			);
+			path = StoreKit;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -250,8 +264,10 @@
 				491F6E60215DDFAD00AECA84 /* CoreDataStack.swift in Sources */,
 				491F6E53215DD91500AECA84 /* LoginViewController.swift in Sources */,
 				491F6E6A215DE60B00AECA84 /* PickUpCell.swift in Sources */,
+				49DAB0A02171699400E58966 /* IAPMembership.swift in Sources */,
 				491F6E4F215DD8AB00AECA84 /* PickUpViewController.swift in Sources */,
 				491F6E5A215DDA3200AECA84 /* PickUp.swift in Sources */,
+				49DAB0A2217169E600E58966 /* IAPHelper.swift in Sources */,
 				491F6E51215DD8EF00AECA84 /* Appearance.swift in Sources */,
 				491F6E65215DE10100AECA84 /* KeychainPasswordItem.swift in Sources */,
 				491F6E38215DD7BF00AECA84 /* AppDelegate.swift in Sources */,
@@ -398,6 +414,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WEBVY2C5S6;
 				INFOPLIST_FILE = chute/Info.plist;
@@ -407,6 +424,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.doswelloliverdavid.chute;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -416,6 +434,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WEBVY2C5S6;
 				INFOPLIST_FILE = chute/Info.plist;
@@ -425,6 +444,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.doswelloliverdavid.chute;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

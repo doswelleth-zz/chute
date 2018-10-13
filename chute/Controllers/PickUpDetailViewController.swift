@@ -113,14 +113,6 @@ class PickUpDetailViewController: UIViewController, UITextFieldDelegate {
         return button
     }()
     
-    let laundryImage: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "PickUp")
-        image.layer.cornerRadius = 75
-        image.clipsToBounds = true
-        image.translatesAutoresizingMaskIntoConstraints = false
-        return image
-    }()
     
     @objc private func scheduleButtonTap(sender: UIButton) {
         if nameTextField.text!.isEmpty || addressTextField.text!.isEmpty || cityStateZipTextField.text!.isEmpty || quantityTextField.text!.isEmpty || hasChuteBagTextField.text!.isEmpty || hasExpressTextField.text!.isEmpty {
@@ -220,7 +212,6 @@ class PickUpDetailViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(cityStateZipTextField)
         view.addSubview(identifierLabel)
         view.addSubview(scheduleButton)
-        view.addSubview(laundryImage)
         
         let date = Date()
         let formatter = DateFormatter()
@@ -276,14 +267,9 @@ class PickUpDetailViewController: UIViewController, UITextFieldDelegate {
         identifierLabel.widthAnchor.constraint(equalToConstant: 350).isActive = true
         identifierLabel.heightAnchor.constraint(equalToConstant: 35).isActive = true
         
-        scheduleButton.topAnchor.constraint(equalTo: identifierLabel.bottomAnchor, constant: 20).isActive = true
+        scheduleButton.topAnchor.constraint(equalTo: identifierLabel.bottomAnchor, constant: 50).isActive = true
         scheduleButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         scheduleButton.widthAnchor.constraint(equalToConstant: 125).isActive = true
         scheduleButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        
-        laundryImage.topAnchor.constraint(equalTo: scheduleButton.bottomAnchor, constant: 20).isActive = true
-        laundryImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        laundryImage.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        laundryImage.heightAnchor.constraint(equalToConstant: 150).isActive = true
     }
 }
