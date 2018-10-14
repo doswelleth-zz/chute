@@ -165,12 +165,6 @@ class PickUpController {
                 return
             }
             DispatchQueue.main.async {
-                guard let index = self.pickUps.index(of: pickUp) else {
-                    NSLog("Something happened to the entry")
-                    completion(NSError())
-                    return
-                }
-                self.pickUps.remove(at: index)
                 completion(nil)
             }
         }.resume()

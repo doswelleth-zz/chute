@@ -17,4 +17,8 @@ struct PickUp: Codable, Equatable {
     let hasExpress: String
     let identifier: String
     let timestamp: Date
+    
+    static func ==(lhs: PickUp, rhs: PickUp) -> Bool {
+        return lhs.identifier == rhs.identifier
+    }
 }

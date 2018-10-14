@@ -140,6 +140,7 @@ extension PickUpViewController: UICollectionViewDataSource {
                 self.pickUpController.delete(pickUp: pickUp)
                 self.pickUpController.deleteFirebasePickUp(pickUp: pickUp, completion: { (error) in
                     if let error = error {
+                        
                         NSLog("Error deleting pick up \(error)")
                     }
                 })
