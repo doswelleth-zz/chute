@@ -105,7 +105,7 @@ class PickUpDetailViewController: UIViewController, UITextFieldDelegate {
         button.backgroundColor = Appearance.customBackground
         button.layer.borderColor = UIColor.white.cgColor
         button.layer.borderWidth = 1
-        button.layer.cornerRadius = 25
+        button.layer.cornerRadius = 10
         button.setTitle("Done", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(scheduleButtonTap(sender:)), for: .touchUpInside)

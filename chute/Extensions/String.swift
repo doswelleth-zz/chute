@@ -39,7 +39,12 @@ extension String {
     static var messageTitle = "Please enter all fields correctly"
     static var actionTitle = "Okay"
     
-    // Pick Up (Dashboard)
+    // Welcome
+    
+    static var welcomeLabelText = "Welcome To Chute"
+    static var getStartedButtonTitle = "Get Started"
+    
+    // Pick Up
     
     static var ordersTitle = "Orders"
     static var customizationLabel = "Customization"

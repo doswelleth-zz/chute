@@ -150,10 +150,10 @@ class LoginViewController: UIViewController {
             
             UserDefaults.standard.set(true, forKey: String.hasLoginKey)
             signInButton.tag = signInButtonTag
-            presentPickUpTableViewController()
+            presentWelcomeViewController()
         } else if sender.tag == signInButtonTag {
             if checkLogin(username: newAccountName, password: newPassword) {
-                presentPickUpTableViewController()
+                presentWelcomeViewController()
             } else {
                 showLoginFailedAlert()
             }
@@ -207,8 +207,8 @@ class LoginViewController: UIViewController {
         }
     }
     
-    private func presentPickUpTableViewController() {
-        let vc = PickUpViewController()
+    private func presentWelcomeViewController() {
+        let vc = WelcomeViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -235,7 +235,7 @@ class LoginViewController: UIViewController {
                 alert.addAction(action)
                 self?.present(alert, animated: true)
             } else {
-                self?.presentPickUpTableViewController()
+                self?.presentWelcomeViewController()
             }
         }
     }

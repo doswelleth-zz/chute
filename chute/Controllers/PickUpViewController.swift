@@ -54,7 +54,7 @@ class PickUpViewController: UIViewController {
         }
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.backgroundColor = UIColor(patternImage: UIImage(named: "Background")!)
+        collectionView.backgroundColor = Appearance.customBackground
         collectionView.register(PickUpCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
     
