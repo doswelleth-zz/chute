@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import FirebaseAuth
 
 struct KeychainConfiguration {
     static let serviceName = "chute"
@@ -120,6 +121,23 @@ class LoginViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
+    // TODO: Firebase auth code - right now, only works with Core data
+    
+//    @objc private func signInButtonTap(sender: UIButton) {
+//
+//        guard let email = usernameTextField.text, let password = passwordTextField.text else
+//        { return }
+//
+//        Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
+//            if let error = error {
+//                NSLog("Error authenticating user: \(error)")
+//            }
+//            guard let user = authResult?.user else { return }
+//            self.usernameTextField.text! = user.displayName ?? "User"
+//            self.presentWelcomeViewController()
+//        }
+//    }
     
     @objc private func signInButtonTapped(sender: UIButton) {
         self.navigationController?.navigationBar.isHidden = true
