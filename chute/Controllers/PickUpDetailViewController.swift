@@ -19,16 +19,6 @@ class PickUpDetailViewController: UIViewController, UITextFieldDelegate, UNUserN
         
         setUpViews()
         
-        let center = UNUserNotificationCenter.current()
-        center.delegate = self
-        center.requestAuthorization(options: [. alert, .sound]) { (granted, error) in
-            if let error = error {
-                NSLog("There was an error requesting authorization: \(error)")
-                return
-            }
-            NSLog("Notifications granted \(granted)")
-        }
-        
         self.title = "Order a Pick Up"
         self.navigationController?.navigationBar.tintColor = .white
         self.navigationController?.navigationBar.isHidden = false

@@ -31,6 +31,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         _ = Appearance.applicationFont(with: UIFont.TextStyle(rawValue: "REZ"), pointSize: 50)
         
+        UNUserNotificationCenter.current().requestAuthorization(options: .alert) { (success, error) in
+            if let error = error {
+                NSLog("Notification request denied by user: \(error)")
+            }
+        }
+        UNUserNotificationCenter.current().delegate = self
+        
         return true
     }
     

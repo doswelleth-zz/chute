@@ -30,7 +30,6 @@ class PickUpViewController: UIViewController {
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let pickUpVC = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        pickUpVC.backgroundColor = .white
         pickUpVC.alwaysBounceVertical = true
         pickUpVC.showsVerticalScrollIndicator = false
         return pickUpVC
@@ -120,6 +119,8 @@ extension PickUpViewController: UICollectionViewDataSource {
         
         cell.timeStampLabel.text = formatter.string(from: pickUp.timestamp)
         cell.nameLabel.text = pickUp.name
+        cell.addressLabel.text = pickUp.address
+        cell.cityStateZipLabel.text = pickUp.cityStateZip
         cell.typeLabel.text = pickUp.type
         cell.hasChuteBagLabel.text = pickUp.hasChuteBag
         cell.scheduleLabel.text = pickUp.schedule
@@ -190,7 +191,7 @@ extension PickUpViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: view.frame.size.width, height: 250)
+        return CGSize(width: view.frame.size.width, height: 350)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

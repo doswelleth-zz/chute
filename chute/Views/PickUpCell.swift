@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AudioToolbox
 import UserNotifications
 
 class PickUpCell: UICollectionViewCell {
@@ -55,9 +54,51 @@ class PickUpCell: UICollectionViewCell {
         return label
     }()
     
+    let addressConstantLabel: UILabel = {
+        let label = UILabel()
+        label.text =  "Address"
+        label.textColor = .white
+        label.textAlignment = .left
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.isUserInteractionEnabled = false
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+   
+    let addressLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .white
+        label.textAlignment = .right
+        label.font = UIFont.systemFont(ofSize: 17)
+        label.isUserInteractionEnabled = false
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let cityStateZipConstantLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Address 2"
+        label.textColor = .white
+        label.textAlignment = .left
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.isUserInteractionEnabled = false
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let cityStateZipLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .white
+        label.textAlignment = .right
+        label.font = UIFont.systemFont(ofSize: 17)
+        label.isUserInteractionEnabled = false
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     let typeConstantLabel: UILabel = {
         let label = UILabel()
-        label.text = "Quantity"
+        label.text = "Type"
         label.textColor = .white
         label.textAlignment = .left
         label.font = UIFont.boldSystemFont(ofSize: 18)
@@ -70,7 +111,7 @@ class PickUpCell: UICollectionViewCell {
         let label = UILabel()
         label.textColor = .white
         label.textAlignment = .right
-        label.font = UIFont.boldSystemFont(ofSize: 17)
+        label.font = UIFont.systemFont(ofSize: 17)
         label.isUserInteractionEnabled = false
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -91,7 +132,7 @@ class PickUpCell: UICollectionViewCell {
         let label = UILabel()
         label.textColor = .white
         label.textAlignment = .right
-        label.font = UIFont.boldSystemFont(ofSize: 17)
+        label.font = UIFont.systemFont(ofSize: 17)
         label.isUserInteractionEnabled = false
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -99,7 +140,7 @@ class PickUpCell: UICollectionViewCell {
     
     let scheduleConstantLabel: UILabel = {
         let label = UILabel()
-        label.text = "Has Chute Express"
+        label.text = "Schedule"
         label.textColor = .white
         label.textAlignment = .left
         label.font = UIFont.boldSystemFont(ofSize: 18)
@@ -112,7 +153,7 @@ class PickUpCell: UICollectionViewCell {
         let label = UILabel()
         label.textColor = .white
         label.textAlignment = .right
-        label.font = UIFont.boldSystemFont(ofSize: 17)
+        label.font = UIFont.systemFont(ofSize: 17)
         label.isUserInteractionEnabled = false
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -133,6 +174,10 @@ class PickUpCell: UICollectionViewCell {
         addSubview(timeStampLabel)
         addSubview(nameConstantLabel)
         addSubview(nameLabel)
+        addSubview(addressConstantLabel)
+        addSubview(addressLabel)
+        addSubview(cityStateZipConstantLabel)
+        addSubview(cityStateZipLabel)
         addSubview(typeConstantLabel)
         addSubview(typeLabel)
         addSubview(hasChuteBagConstantLabel)
@@ -159,18 +204,38 @@ class PickUpCell: UICollectionViewCell {
         nameConstantLabel.heightAnchor.constraint(equalToConstant: 18).isActive = true
         
         nameLabel.topAnchor.constraint(equalTo: timeStampLabel.bottomAnchor, constant: 20).isActive = true
-        nameLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -5).isActive = true
+        nameLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -10).isActive = true
         nameLabel.widthAnchor.constraint(equalToConstant: 300).isActive = true
         nameLabel.heightAnchor.constraint(equalToConstant: 18).isActive = true
         
-        typeConstantLabel.topAnchor.constraint(equalTo: nameConstantLabel.bottomAnchor, constant: 20).isActive = true
+        addressConstantLabel.topAnchor.constraint(equalTo: nameConstantLabel.bottomAnchor, constant: 20).isActive = true
+        addressConstantLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 10).isActive = true
+        addressConstantLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        addressConstantLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        
+        addressLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 20).isActive = true
+        addressLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -10).isActive = true
+        addressLabel.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        addressLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        
+        cityStateZipConstantLabel.topAnchor.constraint(equalTo: addressConstantLabel.bottomAnchor, constant: 20).isActive = true
+        cityStateZipConstantLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 10).isActive = true
+        cityStateZipConstantLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        cityStateZipConstantLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        
+        cityStateZipLabel.topAnchor.constraint(equalTo: addressLabel.bottomAnchor, constant: 20).isActive = true
+        cityStateZipLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -10).isActive = true
+        cityStateZipLabel.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        cityStateZipLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        
+        typeConstantLabel.topAnchor.constraint(equalTo: cityStateZipConstantLabel.bottomAnchor, constant: 20).isActive = true
         typeConstantLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 10).isActive = true
         typeConstantLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
         typeConstantLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
-        typeLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 20).isActive = true
-        typeLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -5).isActive = true
-        typeLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        typeLabel.topAnchor.constraint(equalTo: cityStateZipLabel.bottomAnchor, constant: 20).isActive = true
+        typeLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -10).isActive = true
+        typeLabel.widthAnchor.constraint(equalToConstant: 150).isActive = true
         typeLabel.heightAnchor.constraint(equalToConstant: 18).isActive = true
         
         hasChuteBagConstantLabel.topAnchor.constraint(equalTo: typeConstantLabel.bottomAnchor, constant: 20).isActive = true
@@ -179,7 +244,7 @@ class PickUpCell: UICollectionViewCell {
         hasChuteBagConstantLabel.heightAnchor.constraint(equalToConstant: 19).isActive = true
         
         hasChuteBagLabel.topAnchor.constraint(equalTo: typeLabel.bottomAnchor, constant: 20).isActive = true
-         hasChuteBagLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -5).isActive = true
+        hasChuteBagLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -10).isActive = true
         hasChuteBagLabel.widthAnchor.constraint(equalToConstant: 75).isActive = true
         hasChuteBagLabel.heightAnchor.constraint(equalToConstant: 18).isActive = true
         
@@ -189,11 +254,11 @@ class PickUpCell: UICollectionViewCell {
         scheduleConstantLabel.heightAnchor.constraint(equalToConstant: 18).isActive = true
         
         scheduleLabel.topAnchor.constraint(equalTo: hasChuteBagLabel.bottomAnchor, constant: 20).isActive = true
-        scheduleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -5).isActive = true
-        scheduleLabel.widthAnchor.constraint(equalToConstant: 75).isActive = true
+        scheduleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -10).isActive = true
+        scheduleLabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
         scheduleLabel.heightAnchor.constraint(equalToConstant: 18).isActive = true
         
-        identifierLabel.topAnchor.constraint(equalTo: scheduleLabel.bottomAnchor, constant: 20).isActive = true
+        identifierLabel.topAnchor.constraint(equalTo: scheduleLabel.bottomAnchor, constant: 40).isActive = true
         identifierLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 10).isActive = true
         identifierLabel.widthAnchor.constraint(equalToConstant: frame.size.width).isActive = true
         identifierLabel.heightAnchor.constraint(equalToConstant: 18).isActive = true
