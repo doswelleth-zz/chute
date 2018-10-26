@@ -55,7 +55,7 @@ class PickUpCell: UICollectionViewCell {
         return label
     }()
     
-    let quantityConstantLabel: UILabel = {
+    let typeConstantLabel: UILabel = {
         let label = UILabel()
         label.text = "Quantity"
         label.textColor = .white
@@ -66,7 +66,7 @@ class PickUpCell: UICollectionViewCell {
         return label
     }()
     
-    let quantityLabel: UILabel = {
+    let typeLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
         label.textAlignment = .right
@@ -97,7 +97,7 @@ class PickUpCell: UICollectionViewCell {
         return label
     }()
     
-    let hasChuteExpressConstantLabel: UILabel = {
+    let scheduleConstantLabel: UILabel = {
         let label = UILabel()
         label.text = "Has Chute Express"
         label.textColor = .white
@@ -108,7 +108,7 @@ class PickUpCell: UICollectionViewCell {
         return label
     }()
     
-    let hasChuteExpressLabel: UILabel = {
+    let scheduleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
         label.textAlignment = .right
@@ -133,12 +133,12 @@ class PickUpCell: UICollectionViewCell {
         addSubview(timeStampLabel)
         addSubview(nameConstantLabel)
         addSubview(nameLabel)
-        addSubview(quantityConstantLabel)
-        addSubview(quantityLabel)
+        addSubview(typeConstantLabel)
+        addSubview(typeLabel)
         addSubview(hasChuteBagConstantLabel)
         addSubview(hasChuteBagLabel)
-        addSubview(hasChuteExpressConstantLabel)
-        addSubview(hasChuteExpressLabel)
+        addSubview(scheduleConstantLabel)
+        addSubview(scheduleLabel)
         addSubview(identifierLabel)
         
         layer.borderWidth = 0.5
@@ -163,37 +163,37 @@ class PickUpCell: UICollectionViewCell {
         nameLabel.widthAnchor.constraint(equalToConstant: 300).isActive = true
         nameLabel.heightAnchor.constraint(equalToConstant: 18).isActive = true
         
-        quantityConstantLabel.topAnchor.constraint(equalTo: nameConstantLabel.bottomAnchor, constant: 20).isActive = true
-        quantityConstantLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 10).isActive = true
-        quantityConstantLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        quantityConstantLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        typeConstantLabel.topAnchor.constraint(equalTo: nameConstantLabel.bottomAnchor, constant: 20).isActive = true
+        typeConstantLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 10).isActive = true
+        typeConstantLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        typeConstantLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
-        quantityLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 20).isActive = true
-        quantityLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -5).isActive = true
-        quantityLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        quantityLabel.heightAnchor.constraint(equalToConstant: 18).isActive = true
+        typeLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 20).isActive = true
+        typeLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -5).isActive = true
+        typeLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        typeLabel.heightAnchor.constraint(equalToConstant: 18).isActive = true
         
-        hasChuteBagConstantLabel.topAnchor.constraint(equalTo: quantityConstantLabel.bottomAnchor, constant: 20).isActive = true
+        hasChuteBagConstantLabel.topAnchor.constraint(equalTo: typeConstantLabel.bottomAnchor, constant: 20).isActive = true
         hasChuteBagConstantLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 10).isActive = true
         hasChuteBagConstantLabel.widthAnchor.constraint(equalToConstant: 250).isActive = true
         hasChuteBagConstantLabel.heightAnchor.constraint(equalToConstant: 19).isActive = true
         
-        hasChuteBagLabel.topAnchor.constraint(equalTo: quantityLabel.bottomAnchor, constant: 20).isActive = true
+        hasChuteBagLabel.topAnchor.constraint(equalTo: typeLabel.bottomAnchor, constant: 20).isActive = true
          hasChuteBagLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -5).isActive = true
         hasChuteBagLabel.widthAnchor.constraint(equalToConstant: 75).isActive = true
         hasChuteBagLabel.heightAnchor.constraint(equalToConstant: 18).isActive = true
         
-        hasChuteExpressConstantLabel.topAnchor.constraint(equalTo: hasChuteBagConstantLabel.bottomAnchor, constant: 20).isActive = true
-        hasChuteExpressConstantLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 10).isActive = true
-        hasChuteExpressConstantLabel.widthAnchor.constraint(equalToConstant: 250).isActive = true
-        hasChuteExpressConstantLabel.heightAnchor.constraint(equalToConstant: 18).isActive = true
+        scheduleConstantLabel.topAnchor.constraint(equalTo: hasChuteBagConstantLabel.bottomAnchor, constant: 20).isActive = true
+        scheduleConstantLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 10).isActive = true
+        scheduleConstantLabel.widthAnchor.constraint(equalToConstant: 250).isActive = true
+        scheduleConstantLabel.heightAnchor.constraint(equalToConstant: 18).isActive = true
         
-        hasChuteExpressLabel.topAnchor.constraint(equalTo: hasChuteBagLabel.bottomAnchor, constant: 20).isActive = true
-        hasChuteExpressLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -5).isActive = true
-        hasChuteExpressLabel.widthAnchor.constraint(equalToConstant: 75).isActive = true
-        hasChuteExpressLabel.heightAnchor.constraint(equalToConstant: 18).isActive = true
+        scheduleLabel.topAnchor.constraint(equalTo: hasChuteBagLabel.bottomAnchor, constant: 20).isActive = true
+        scheduleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -5).isActive = true
+        scheduleLabel.widthAnchor.constraint(equalToConstant: 75).isActive = true
+        scheduleLabel.heightAnchor.constraint(equalToConstant: 18).isActive = true
         
-        identifierLabel.topAnchor.constraint(equalTo: hasChuteExpressLabel.bottomAnchor, constant: 20).isActive = true
+        identifierLabel.topAnchor.constraint(equalTo: scheduleLabel.bottomAnchor, constant: 20).isActive = true
         identifierLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 10).isActive = true
         identifierLabel.widthAnchor.constraint(equalToConstant: frame.size.width).isActive = true
         identifierLabel.heightAnchor.constraint(equalToConstant: 18).isActive = true

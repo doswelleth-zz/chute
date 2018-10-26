@@ -9,7 +9,33 @@
 import UIKit
 import UserNotifications
 
-class PickUpDetailViewController: UIViewController, UITextFieldDelegate {
+class PickUpDetailViewController: UIViewController, UITextFieldDelegate, UNUserNotificationCenterDelegate {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setUpLeftNavBar()
+        setUpRightNavBar()
+        
+        setUpViews()
+        
+        let center = UNUserNotificationCenter.current()
+        center.delegate = self
+        center.requestAuthorization(options: [. alert, .sound]) { (granted, error) in
+            if let error = error {
+                NSLog("There was an error requesting authorization: \(error)")
+                return
+            }
+            NSLog("Notifications granted \(granted)")
+        }
+        
+        self.title = "Order a Pick Up"
+        self.navigationController?.navigationBar.tintColor = .white
+        self.navigationController?.navigationBar.isHidden = false
+        self.navigationItem.hidesBackButton = true
+        
+        hideKeyboardWhenTappedAround()
+    }
     
     let pickUp: PickUp? = nil
     var pickUpController: PickUpController?
@@ -34,11 +60,11 @@ class PickUpDetailViewController: UIViewController, UITextFieldDelegate {
         return textField
     }()
     
-    let quantityTextField: UITextField = {
+    let typeTextField: UITextField = {
         let textField = UITextField()
         textField.textColor = .white
         textField.textAlignment = .left
-        textField.attributedPlaceholder = NSAttributedString(string: "Quantity", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        textField.attributedPlaceholder = NSAttributedString(string: "Type (laundry, dry cleaning)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         textField.tintColor = .white
         textField.font = UIFont.boldSystemFont(ofSize: 20)
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -56,11 +82,11 @@ class PickUpDetailViewController: UIViewController, UITextFieldDelegate {
         return textField
     }()
     
-    let hasExpressTextField: UITextField = {
+    let scheduleTextField: UITextField = {
         let textField = UITextField()
         textField.textColor = .white
         textField.textAlignment = .left
-        textField.attributedPlaceholder = NSAttributedString(string: "Have Chute Express", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        textField.attributedPlaceholder = NSAttributedString(string: "Schedule (one-time, weekly)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         textField.tintColor = .white
         textField.font = UIFont.boldSystemFont(ofSize: 20)
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -113,29 +139,26 @@ class PickUpDetailViewController: UIViewController, UITextFieldDelegate {
         return button
     }()
     
-    
     @objc private func scheduleButtonTap(sender: UIButton) {
-        if nameTextField.text!.isEmpty || addressTextField.text!.isEmpty || cityStateZipTextField.text!.isEmpty || quantityTextField.text!.isEmpty || hasChuteBagTextField.text!.isEmpty || hasExpressTextField.text!.isEmpty {
+        if nameTextField.text!.isEmpty || addressTextField.text!.isEmpty || cityStateZipTextField.text!.isEmpty || typeTextField.text!.isEmpty || hasChuteBagTextField.text!.isEmpty || scheduleTextField.text!.isEmpty {
             let alert = UIAlertController(title: "Error", message: "Please enter all fields correctly", preferredStyle: .alert)
             let action = UIAlertAction(title: "Okay", style: .default) { (action) in
             }
             alert.addAction(action)
             present(alert, animated: true, completion: nil)
         } else {
-            guard let name = nameTextField.text, let address = addressTextField.text, let cityStateZip = cityStateZipTextField.text, let quantity = quantityTextField.text, let hasChuteBag = hasChuteBagTextField.text, let hasChuteExpress = hasExpressTextField.text, let identifier = identifierLabel.text else { return }
+            guard let name = nameTextField.text, let address = addressTextField.text, let cityStateZip = cityStateZipTextField.text, let type = typeTextField.text, let hasChuteBag = hasChuteBagTextField.text, let schedule = scheduleTextField.text, let identifier = identifierLabel.text else { return }
             
-            pickUpController?.createPickUp(with: name, address: address, cityStateZip: cityStateZip, quantity: quantity, hasChuteBag: hasChuteBag, hasExpress: hasChuteExpress, identifier: identifier, timestamp: Date())
+            pickUpController?.createPickUp(with: name, address: address, cityStateZip: cityStateZip, type: type, hasChuteBag: hasChuteBag, schedule: schedule, identifier: identifier, timestamp: Date())
             
-            pickUpController?.createFirebasePickUp(with: name, address: address, cityStateZip: cityStateZip, quantity: quantity, hasChuteBag: hasChuteBag, hasExpress: hasChuteExpress, identifier: identifier, timestamp: Date(), completion: { (error) in
+            pickUpController?.createFirebasePickUp(with: name, address: address, cityStateZip: cityStateZip, type: type, hasChuteBag: hasChuteBag, schedule: schedule, identifier: identifier, timestamp: Date(), completion: { (error) in
                 if let error = error {
                     NSLog("Error occured while creating a pickup: \(error)")
                 }
             })
-          
             sendNotification()
-
-            self.navigationController?.popViewController(animated: true)
         }
+        presentPickUpViewController()
     }
     
     private func sendNotification() {
@@ -157,39 +180,27 @@ class PickUpDetailViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setUpLeftNavBar()
-        setUpRightNavBar()
-        
-        setUpViews()
-        
-        self.title = "Order a Pick Up"
-        self.navigationController?.navigationBar.tintColor = .white
-        
-        hideKeyboardWhenTappedAround()
+    private func presentPickUpViewController() {
+        let vc = PickUpViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    private func setUpLeftNavBar() {
+    func setUpLeftNavBar() {
         let left = UIButton(type: .custom)
-        left.setTitle(String.navigationItemTitle, for: .normal)
         left.setTitleColor(.white, for: .normal)
-        left.titleLabel?.font = UIFont.systemFont(ofSize: 30)
-        left.widthAnchor.constraint(equalToConstant: 44.0).isActive = true
-        left.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
-        left.layer.masksToBounds = true
+        left.widthAnchor.constraint(equalToConstant: 100.0).isActive = true
+        left.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
         left.contentMode = .scaleAspectFill
-        left.addTarget(self, action: #selector(leftBarButtonTapped(sender:)), for: .touchUpInside)
+        left.addTarget(self, action: #selector(leftBarButtonPop(sender:)), for: .touchUpInside)
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: left)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Orders", style: .plain, target: self, action: #selector(leftBarButtonPop(sender:)))
     }
     
-    @objc private func leftBarButtonTapped(sender: UIButton) {
+    @objc private func leftBarButtonPop(sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
     
-    func setUpRightNavBar() {
+    private func setUpRightNavBar() {
         let right = UIButton(type: .custom)
         right.setImage(UIImage(named: "Subscribe"), for: .normal)
         right.layer.cornerRadius = 20
@@ -211,9 +222,9 @@ class PickUpDetailViewController: UIViewController, UITextFieldDelegate {
         view.backgroundColor = Appearance.customBackground
         view.addSubview(timeStampLabel)
         view.addSubview(nameTextField)
-        view.addSubview(quantityTextField)
+        view.addSubview(typeTextField)
         view.addSubview(hasChuteBagTextField)
-        view.addSubview(hasExpressTextField)
+        view.addSubview(scheduleTextField)
         view.addSubview(addressTextField)
         view.addSubview(cityStateZipTextField)
         view.addSubview(identifierLabel)
@@ -225,9 +236,9 @@ class PickUpDetailViewController: UIViewController, UITextFieldDelegate {
         formatter.timeStyle = .short
         
         nameTextField.delegate = self
-        quantityTextField.delegate = self
+        typeTextField.delegate = self
         hasChuteBagTextField.delegate = self
-        hasExpressTextField.delegate = self
+        scheduleTextField.delegate = self
         addressTextField.delegate = self
         cityStateZipTextField.delegate = self
         
@@ -253,22 +264,22 @@ class PickUpDetailViewController: UIViewController, UITextFieldDelegate {
         cityStateZipTextField.widthAnchor.constraint(equalToConstant: 350).isActive = true
         cityStateZipTextField.heightAnchor.constraint(equalToConstant: 35).isActive = true
         
-        quantityTextField.topAnchor.constraint(equalTo: cityStateZipTextField.bottomAnchor, constant: 10).isActive = true
-        quantityTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-        quantityTextField.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        quantityTextField.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        typeTextField.topAnchor.constraint(equalTo: cityStateZipTextField.bottomAnchor, constant: 10).isActive = true
+        typeTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        typeTextField.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        typeTextField.heightAnchor.constraint(equalToConstant: 35).isActive = true
         
-        hasChuteBagTextField.topAnchor.constraint(equalTo: quantityTextField.bottomAnchor, constant: 10).isActive = true
+        hasChuteBagTextField.topAnchor.constraint(equalTo: typeTextField.bottomAnchor, constant: 10).isActive = true
         hasChuteBagTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
         hasChuteBagTextField.widthAnchor.constraint(equalToConstant: 200).isActive = true
         hasChuteBagTextField.heightAnchor.constraint(equalToConstant: 35).isActive = true
         
-        hasExpressTextField.topAnchor.constraint(equalTo: hasChuteBagTextField.bottomAnchor, constant: 10).isActive = true
-        hasExpressTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-        hasExpressTextField.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        hasExpressTextField.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        scheduleTextField.topAnchor.constraint(equalTo: hasChuteBagTextField.bottomAnchor, constant: 10).isActive = true
+        scheduleTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        scheduleTextField.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        scheduleTextField.heightAnchor.constraint(equalToConstant: 35).isActive = true
         
-        identifierLabel.topAnchor.constraint(equalTo: hasExpressTextField.bottomAnchor, constant: 10).isActive = true
+        identifierLabel.topAnchor.constraint(equalTo: scheduleTextField.bottomAnchor, constant: 10).isActive = true
         identifierLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         identifierLabel.widthAnchor.constraint(equalToConstant: 350).isActive = true
         identifierLabel.heightAnchor.constraint(equalToConstant: 35).isActive = true

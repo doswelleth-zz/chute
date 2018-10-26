@@ -12,9 +12,9 @@ struct PickUp: Codable, Equatable {
     let name: String
     let address: String
     let cityStateZip: String
-    let quantity: String
+    let type: String
     let hasChuteBag: String
-    let hasExpress: String
+    let schedule: String
     let identifier: String
     let timestamp: Date
     

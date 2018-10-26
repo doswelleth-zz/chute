@@ -46,12 +46,11 @@ class PickUpViewController: UIViewController {
         
         setUpCollectionView()
         setUpNavBar()
-                
-        DispatchQueue.main.async {
-            self.sortedPickUps = self.pickUpController.pickUps.sorted(by: { $0.timestamp > $1.timestamp })
-            self.pickUpController.decode()
-            self.collectionView.reloadData()
-        }
+                        
+        self.sortedPickUps = self.pickUpController.pickUps.sorted(by: { $0.timestamp > $1.timestamp })
+        self.pickUpController.decode()
+        self.collectionView.reloadData()
+        
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = Appearance.customBackground
@@ -121,9 +120,9 @@ extension PickUpViewController: UICollectionViewDataSource {
         
         cell.timeStampLabel.text = formatter.string(from: pickUp.timestamp)
         cell.nameLabel.text = pickUp.name
-        cell.quantityLabel.text = pickUp.quantity
+        cell.typeLabel.text = pickUp.type
         cell.hasChuteBagLabel.text = pickUp.hasChuteBag
-        cell.hasChuteExpressLabel.text = pickUp.hasExpress
+        cell.scheduleLabel.text = pickUp.schedule
         cell.identifierLabel.text = pickUp.identifier
         
         return cell

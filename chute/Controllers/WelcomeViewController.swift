@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import UserNotifications
 
-class WelcomeViewController: UIViewController {
+class WelcomeViewController: UIViewController, UNUserNotificationCenterDelegate {
     
     let imageView: UIImageView = {
         let image = UIImageView()
@@ -31,7 +32,7 @@ class WelcomeViewController: UIViewController {
     }()
     
     @objc private func getStartedTap(sender: UIButton) {
-        let vc = PickUpDetailViewController()
+        let vc = PickUpViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -42,7 +43,7 @@ class WelcomeViewController: UIViewController {
         
     }
 
-    func setUpViews() {
+    private func setUpViews() {
         view.backgroundColor = Appearance.customBackground
      
         view.addSubview(imageView)
@@ -50,14 +51,13 @@ class WelcomeViewController: UIViewController {
         
         imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        imageView.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 300).isActive = true
         
         getStartedButton.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 100).isActive = true
         getStartedButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        getStartedButton.widthAnchor.constraint(equalToConstant: 125).isActive = true
+        getStartedButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
         getStartedButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
     }
-    
 }

@@ -14,9 +14,9 @@ class PickUpController {
     
     private(set) var pickUps: [PickUp] = []
     
-    func createPickUp(with name: String, address: String, cityStateZip: String, quantity: String, hasChuteBag: String, hasExpress: String, identifier: String, timestamp: Date) {
+    func createPickUp(with name: String, address: String, cityStateZip: String, type: String, hasChuteBag: String, schedule: String, identifier: String, timestamp: Date) {
         
-        let pickUp = PickUp(name: name, address: address, cityStateZip: cityStateZip, quantity: quantity, hasChuteBag: hasChuteBag, hasExpress: hasExpress, identifier: identifier, timestamp: timestamp)
+        let pickUp = PickUp(name: name, address: address, cityStateZip: cityStateZip, type: type, hasChuteBag: hasChuteBag, schedule: schedule, identifier: identifier, timestamp: timestamp)
         pickUps.append(pickUp)
         encode()
     }
@@ -99,9 +99,9 @@ class PickUpController {
     
     // Create a new pick up using the PUT method above
     
-    func createFirebasePickUp(with name: String, address: String, cityStateZip: String, quantity: String, hasChuteBag: String, hasExpress: String, identifier: String, timestamp: Date, completion: @escaping (Error?) -> Void) {
+    func createFirebasePickUp(with name: String, address: String, cityStateZip: String, type: String, hasChuteBag: String, schedule: String, identifier: String, timestamp: Date, completion: @escaping (Error?) -> Void) {
         
-        let pickUp = PickUp(name: name, address: address, cityStateZip: cityStateZip, quantity: quantity, hasChuteBag: hasChuteBag, hasExpress: hasExpress, identifier: identifier, timestamp: timestamp)
+        let pickUp = PickUp(name: name, address: address, cityStateZip: cityStateZip, type: type, hasChuteBag: hasChuteBag, schedule: schedule, identifier: identifier, timestamp: timestamp)
         
         // Pass in completion of createFirebasePickUp() into the completion closure of pull() - this will forward the completion of put() to the caller of createFirebasePickUp() so the error can be handled there.
         

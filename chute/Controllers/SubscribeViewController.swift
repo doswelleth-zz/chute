@@ -160,8 +160,8 @@ class SubscribeViewController: UIViewController {
     }
     
     @objc private func setUpRightNavBarPop(sender: UIButton) {
-        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
-        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
+        let vc = PickUpViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     private func setUpViews() {

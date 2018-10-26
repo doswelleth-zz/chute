@@ -31,16 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         _ = Appearance.applicationFont(with: UIFont.TextStyle(rawValue: "REZ"), pointSize: 50)
         
-        let center = UNUserNotificationCenter.current()
-        center.delegate = self
-        center.requestAuthorization(options: [. alert, .sound]) { (granted, error) in
-            if let error = error {
-                NSLog("There was an error requesting authorization: \(error)")
-                return
-            }
-            NSLog("Notifications granted \(granted)")
-        }
-        
         return true
     }
     

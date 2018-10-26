@@ -44,6 +44,13 @@ extension String {
     static var welcomeLabelText = "Welcome To Chute"
     static var getStartedButtonTitle = "Get Started"
     
+    // Selection View
+    
+    static var selectAPickUpText = "Select a Pick Up"
+    static var onceAMonthLabelText = "Monthly"
+    static var twiceAMonthLabelText = "Bi-Weekly"
+    static var weeklyLabelText = "Weekly"
+
     // Pick Up
     
     static var ordersTitle = "Orders"
@@ -58,7 +65,8 @@ extension String {
     // Pick Up Detail
     
     static var priceLabelText = "Price"
-    static var quantityText = "Quantity"
+    static var typeText = "type"
+    static var textFieldNotification = "textFieldNotification"
     
     // Pick Up Info
     
@@ -116,4 +124,3 @@ extension String {
     
     """
 }
-
