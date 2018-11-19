@@ -1,19 +1,18 @@
 //
-//  PickUpViewController.swift
+//  OrdersViewController.swift
 //  chute
 //
-//  Created by David Doswell on 9/27/18.
+//  Created by David Doswell on 11/19/18.
 //  Copyright © 2018 David Doswell. All rights reserved.
 //
-// Icons by Freepik & PongsakornRed
 
 import UIKit
 import UserNotifications
 
 private let reuseIdentifier = "reuseIdentifier"
 
-class PickUpViewController: UIViewController {
-
+class OrdersViewController: UIViewController {
+    
     let pickUpController = PickUpController()
     var sortedPickUps: [PickUp] = []
     
@@ -40,7 +39,7 @@ class PickUpViewController: UIViewController {
         collectionView.backgroundColor = .white
         collectionView.register(PickUpCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
-   
+    
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let pickUpVC = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -55,7 +54,7 @@ class PickUpViewController: UIViewController {
     }
 }
 
-extension PickUpViewController: UICollectionViewDataSource {
+extension OrdersViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -107,7 +106,7 @@ extension PickUpViewController: UICollectionViewDataSource {
                 
                 self.collectionView.reloadData()
             }
-                self.sendNotification()
+            self.sendNotification()
         }
         let no = UIAlertAction(title: "No", style: .default) { (action) in }
         
@@ -146,7 +145,7 @@ extension PickUpViewController: UICollectionViewDataSource {
     }
 }
 
-extension PickUpViewController: UICollectionViewDelegateFlowLayout {
+extension OrdersViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
@@ -158,3 +157,4 @@ extension PickUpViewController: UICollectionViewDelegateFlowLayout {
         return 20.0
     }
 }
+

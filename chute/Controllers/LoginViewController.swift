@@ -226,7 +226,7 @@ class LoginViewController: UIViewController {
     }
     
     private func presentPickupTableViewController() {
-        let vc = PickupTableViewController()
+        let vc = ShopTableViewController()
         self.navigationController?.modalPresentationStyle = .overFullScreen
         self.present(vc, animated: true, completion: nil)
     }

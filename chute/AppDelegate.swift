@@ -20,9 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         let tabBarController = UITabBarController()
         
-        let tabViewController1 = PickupTableViewController()
-        let tabViewController2 = PickUpDetailViewController()
-        let tabViewController3 = PickUpViewController()
+        let tabViewController1 = ProfileViewController()
+        let tabViewController2 = ShopTableViewController()
+        let tabViewController3 = OrdersViewController()
         let tabViewController4 = SubscribeViewController()
         let tabViewController5 = PickUpInfoViewController()
         
@@ -36,17 +36,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         
-        let firstImage = UIImage(named: "Shop")
-        let secondImage = UIImage(named: "Order")
-        let thirdImage = UIImage(named: "Receipts")
+        let firstImage = UIImage(named: "Profile")
+        let secondImage = UIImage(named: "Shop")
+        let thirdImage = UIImage(named: "Orders")
         let fourthImage = UIImage(named: "Plus")
         let fifthImage = UIImage(named: "Info")
         
-        tabViewController1.tabBarItem = UITabBarItem(title: "Shop", image: firstImage, tag: 1)
+        tabViewController1.tabBarItem = UITabBarItem(title: "Profile", image: firstImage, tag: 1)
         
-        tabViewController2.tabBarItem = UITabBarItem(title: "Order", image: secondImage, tag: 2)
+        tabViewController2.tabBarItem = UITabBarItem(title: "Shop", image: secondImage, tag: 2)
         
-        tabViewController3.tabBarItem = UITabBarItem(title: "Receipts", image: thirdImage, tag: 3)
+        tabViewController3.tabBarItem = UITabBarItem(title: "Orders", image: thirdImage, tag: 3)
         
         tabViewController4.tabBarItem = UITabBarItem(title: "Plus", image: fourthImage, tag: 4)
 

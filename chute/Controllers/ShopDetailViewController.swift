@@ -1,15 +1,15 @@
 //
-//  PickUpDetailViewController.swift
+//  ShopDetailViewController.swift
 //  chute
 //
-//  Created by David Doswell on 9/27/18.
+//  Created by David Doswell on 11/19/18.
 //  Copyright © 2018 David Doswell. All rights reserved.
 //
 
 import UIKit
 import UserNotifications
 
-class PickUpDetailViewController: UIViewController, UITextFieldDelegate, UNUserNotificationCenterDelegate {
+class ShopDetailViewController: UIViewController, UITextFieldDelegate, UNUserNotificationCenterDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -170,7 +170,7 @@ class PickUpDetailViewController: UIViewController, UITextFieldDelegate, UNUserN
     }
     
     private func presentPickUpViewController() {
-        let vc = PickUpViewController()
+        let vc = ShopTableViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -246,3 +246,4 @@ class PickUpDetailViewController: UIViewController, UITextFieldDelegate, UNUserN
         scheduleButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
 }
+
