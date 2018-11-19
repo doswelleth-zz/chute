@@ -14,15 +14,7 @@ class PickUpDetailViewController: UIViewController, UITextFieldDelegate, UNUserN
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUpLeftNavBar()
-        setUpRightNavBar()
-        
         setUpViews()
-        
-        self.title = "Order a Pick Up"
-        self.navigationController?.navigationBar.tintColor = .white
-        self.navigationController?.navigationBar.isHidden = false
-        self.navigationItem.hidesBackButton = true
         
         hideKeyboardWhenTappedAround()
     }
@@ -30,9 +22,15 @@ class PickUpDetailViewController: UIViewController, UITextFieldDelegate, UNUserN
     let pickUp: PickUp? = nil
     var pickUpController: PickUpController?
     
+    let orderLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Place "
+        return label
+    }()
+    
     let timeStampLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        label.textColor = .black
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 15)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -41,10 +39,10 @@ class PickUpDetailViewController: UIViewController, UITextFieldDelegate, UNUserN
     
     let nameTextField: UITextField = {
         let textField = UITextField()
-        textField.textColor = .white
+        textField.textColor = .black
         textField.textAlignment = .left
-        textField.attributedPlaceholder = NSAttributedString(string: "First & Last name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-        textField.tintColor = .white
+        textField.attributedPlaceholder = NSAttributedString(string: "First & Last name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        textField.tintColor = .black
         textField.font = UIFont.boldSystemFont(ofSize: 20)
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -52,10 +50,10 @@ class PickUpDetailViewController: UIViewController, UITextFieldDelegate, UNUserN
     
     let typeTextField: UITextField = {
         let textField = UITextField()
-        textField.textColor = .white
+        textField.textColor = .black
         textField.textAlignment = .left
-        textField.attributedPlaceholder = NSAttributedString(string: "Type (laundry, dry cleaning)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-        textField.tintColor = .white
+        textField.attributedPlaceholder = NSAttributedString(string: "Type (laundry, dry cleaning)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        textField.tintColor = .black
         textField.font = UIFont.boldSystemFont(ofSize: 20)
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -63,10 +61,10 @@ class PickUpDetailViewController: UIViewController, UITextFieldDelegate, UNUserN
     
     let hasChuteBagTextField: UITextField = {
         let textField = UITextField()
-        textField.textColor = .white
+        textField.textColor = .black
         textField.textAlignment = .left
-        textField.attributedPlaceholder = NSAttributedString(string: "Have a Chute Bag?", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-        textField.tintColor = .white
+        textField.attributedPlaceholder = NSAttributedString(string: "Have a Chute Bag?", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        textField.tintColor = .black
         textField.font = UIFont.boldSystemFont(ofSize: 20)
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -74,10 +72,10 @@ class PickUpDetailViewController: UIViewController, UITextFieldDelegate, UNUserN
     
     let scheduleTextField: UITextField = {
         let textField = UITextField()
-        textField.textColor = .white
+        textField.textColor = .black
         textField.textAlignment = .left
-        textField.attributedPlaceholder = NSAttributedString(string: "Schedule (one-time, weekly)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-        textField.tintColor = .white
+        textField.attributedPlaceholder = NSAttributedString(string: "Schedule (one-time, weekly)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        textField.tintColor = .black
         textField.font = UIFont.boldSystemFont(ofSize: 20)
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -85,10 +83,10 @@ class PickUpDetailViewController: UIViewController, UITextFieldDelegate, UNUserN
     
     let addressTextField: UITextField = {
         let textField = UITextField()
-        textField.textColor = .white
+        textField.textColor = .black
         textField.textAlignment = .left
-        textField.attributedPlaceholder = NSAttributedString(string: "Address", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-        textField.tintColor = .white
+        textField.attributedPlaceholder = NSAttributedString(string: "Address", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        textField.tintColor = .black
         textField.font = UIFont.boldSystemFont(ofSize: 20)
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -96,10 +94,10 @@ class PickUpDetailViewController: UIViewController, UITextFieldDelegate, UNUserN
     
     let cityStateZipTextField: UITextField = {
         let textField = UITextField()
-        textField.textColor = .white
+        textField.textColor = .black
         textField.textAlignment = .left
-        textField.attributedPlaceholder = NSAttributedString(string: "City State and Zip", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-        textField.tintColor = .white
+        textField.attributedPlaceholder = NSAttributedString(string: "City State and Zip", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        textField.tintColor = .black
         textField.font = UIFont.boldSystemFont(ofSize: 20)
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -108,7 +106,7 @@ class PickUpDetailViewController: UIViewController, UITextFieldDelegate, UNUserN
     let identifierLabel: UILabel = {
         let label = UILabel()
         label.text = UUID().uuidString
-        label.textColor = .white
+        label.textColor = .black
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 14)
         label.isUserInteractionEnabled = false
@@ -122,6 +120,7 @@ class PickUpDetailViewController: UIViewController, UITextFieldDelegate, UNUserN
         button.layer.borderColor = UIColor.white.cgColor
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 10
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         button.setTitle("Done", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(scheduleButtonTap(sender:)), for: .touchUpInside)
@@ -175,41 +174,8 @@ class PickUpDetailViewController: UIViewController, UITextFieldDelegate, UNUserN
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func setUpLeftNavBar() {
-        let left = UIButton(type: .custom)
-        left.setTitleColor(.white, for: .normal)
-        left.widthAnchor.constraint(equalToConstant: 100.0).isActive = true
-        left.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
-        left.contentMode = .scaleAspectFill
-        left.addTarget(self, action: #selector(leftBarButtonPop(sender:)), for: .touchUpInside)
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Orders", style: .plain, target: self, action: #selector(leftBarButtonPop(sender:)))
-    }
-    
-    @objc private func leftBarButtonPop(sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    private func setUpRightNavBar() {
-        let right = UIButton(type: .custom)
-        right.setImage(UIImage(named: "Subscribe"), for: .normal)
-        right.layer.cornerRadius = 20
-        right.widthAnchor.constraint(equalToConstant: 40.0).isActive = true
-        right.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
-        right.contentMode = .scaleAspectFill
-        right.adjustsImageWhenHighlighted = false
-        right.addTarget(self, action: #selector(rightBarButtonTap(sender:)), for: .touchUpInside)
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: right)
-    }
-    
-    @objc private func rightBarButtonTap(sender: UIButton) {
-        let vc = SubscribeViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
     func setUpViews() {
-        view.backgroundColor = Appearance.customBackground
+        view.backgroundColor = .white
         view.addSubview(timeStampLabel)
         view.addSubview(nameTextField)
         view.addSubview(typeTextField)
@@ -234,7 +200,7 @@ class PickUpDetailViewController: UIViewController, UITextFieldDelegate, UNUserN
         
         timeStampLabel.text = formatter.string(from: date)
         
-        timeStampLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
+        timeStampLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 200).isActive = true
         timeStampLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         timeStampLabel.widthAnchor.constraint(equalToConstant: view.frame.size.width).isActive = true
         timeStampLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true

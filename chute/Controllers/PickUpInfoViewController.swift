@@ -19,20 +19,20 @@ class PickUpInfoViewController: UIViewController {
     let faqLabel: UILabel = {
         let label = UILabel()
         label.text = String.faqLabelText
-        label.textColor = .white
+        label.textColor = Appearance.customBackground
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 75)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
-    }()
+    }() 
     
     let onboardTextView: UITextView = {
         let textView = UITextView()
-        textView.backgroundColor = Appearance.customBackground
+        textView.backgroundColor = .white
         textView.text = String.onboardingInfo
-        textView.textColor = .white
+        textView.textColor = .black
         textView.textAlignment = .justified
-        textView.font = UIFont.systemFont(ofSize: 17)
+        textView.font = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight(rawValue: -0.3))
         textView.isScrollEnabled = true
         textView.isEditable = false
         textView.translatesAutoresizingMaskIntoConstraints = false
@@ -43,6 +43,7 @@ class PickUpInfoViewController: UIViewController {
         let button = UIButton(type: .system)
         button.backgroundColor = Appearance.customBackground
         button.layer.borderColor = UIColor.white.cgColor
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 10
         button.setTitle("Done", for: .normal)
@@ -57,19 +58,19 @@ class PickUpInfoViewController: UIViewController {
     }
     
     func setUpViews() {
-        view.backgroundColor = Appearance.customBackground
+        view.backgroundColor = .white
         
         view.addSubview(faqLabel)
         view.addSubview(onboardTextView)
         view.addSubview(doneButton)
        
-        faqLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
+        faqLabel.topAnchor.constraint(equalTo: onboardTextView.topAnchor, constant: -80).isActive = true
         faqLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         faqLabel.widthAnchor.constraint(equalToConstant: view.frame.size.width).isActive = true
         faqLabel.heightAnchor.constraint(equalToConstant: 76).isActive = true
         
-        onboardTextView.topAnchor.constraint(equalTo: faqLabel.bottomAnchor, constant: 20).isActive = true
         onboardTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        onboardTextView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         onboardTextView.widthAnchor.constraint(equalToConstant: 350).isActive = true
         onboardTextView.heightAnchor.constraint(equalToConstant: 400).isActive = true
         

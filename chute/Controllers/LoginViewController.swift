@@ -21,7 +21,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         setUpViews()
-        
+                
         let hasLogin = UserDefaults.standard.bool(forKey: String.hasLoginKey)
         
         if hasLogin {
@@ -168,10 +168,10 @@ class LoginViewController: UIViewController {
             
             UserDefaults.standard.set(true, forKey: String.hasLoginKey)
             signInButton.tag = signInButtonTag
-            presentWelcomeViewController()
+            presentPickupTableViewController()
         } else if sender.tag == signInButtonTag {
             if checkLogin(username: newAccountName, password: newPassword) {
-                presentWelcomeViewController()
+                presentPickupTableViewController()
             } else {
                 showLoginFailedAlert()
             }
@@ -225,9 +225,10 @@ class LoginViewController: UIViewController {
         }
     }
     
-    private func presentWelcomeViewController() {
-        let vc = WelcomeViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+    private func presentPickupTableViewController() {
+        let vc = PickupTableViewController()
+        self.navigationController?.modalPresentationStyle = .overFullScreen
+        self.present(vc, animated: true, completion: nil)
     }
     
     // Touch ID
@@ -253,7 +254,7 @@ class LoginViewController: UIViewController {
                 alert.addAction(action)
                 self?.present(alert, animated: true)
             } else {
-                self?.presentWelcomeViewController()
+                self?.presentPickupTableViewController()
             }
         }
     }

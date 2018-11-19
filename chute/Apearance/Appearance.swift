@@ -14,8 +14,7 @@ enum Appearance {
     
     static func setUpAppearance() {
         UINavigationBar.appearance().barTintColor = Appearance.customBackground
-        UINavigationBar.appearance().tintColor = Appearance.customBackground
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        UINavigationBar.appearance().tintColor = .white
         
         UILabel.appearance().tintColor = Appearance.customBackground
         UITextField.appearance().tintColor = Appearance.customBackground
@@ -23,7 +22,6 @@ enum Appearance {
     
     static func applicationFont(with textStyle: UIFont.TextStyle, pointSize: CGFloat) -> UIFont {
         let result = UIFont(name: "REZ", size: pointSize)!
-        
         return UIFontMetrics(forTextStyle: textStyle).scaledFont(for: result)
     }
     

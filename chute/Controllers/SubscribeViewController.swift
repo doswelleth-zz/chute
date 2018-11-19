@@ -11,11 +11,17 @@ import SafariServices
 
 class SubscribeViewController: UIViewController {
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setUpViews()
+    }
+    
     let subscribeButton : UIButton = {
         let button = UIButton(type: .system)
         button.setTitle(String.subscribeButtonTitle, for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         button.layer.cornerRadius = 10
         button.layer.borderColor = UIColor.white.cgColor
         button.layer.borderWidth = 1
@@ -26,23 +32,15 @@ class SubscribeViewController: UIViewController {
         return button
     }()
     
-    let welcomeToChutePlusImage : UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "ChutePlus")
-        image.contentMode = .scaleAspectFill
-        image.translatesAutoresizingMaskIntoConstraints = false
-        return image
-    }()
-    
     let welcomeToChutePlusLabel : UILabel = {
         let label = UILabel()
         label.text = String.welcomeToChutePlusLabelText
-        label.textColor = .white
+        label.textColor = .black
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 17)
         label.numberOfLines = 0
         label.lineBreakMode = NSLineBreakMode.byWordWrapping
-        label.backgroundColor = Appearance.customBackground
+        label.backgroundColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -50,12 +48,12 @@ class SubscribeViewController: UIViewController {
     let autoRenewMessageLabel : UILabel = {
         let label = UILabel()
         label.text = String.subscriptionText
-        label.font = UIFont.systemFont(ofSize: 12)
+        label.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight(rawValue: -0.3))
         label.numberOfLines = 0
         label.lineBreakMode = NSLineBreakMode.byWordWrapping
         label.textAlignment = .center
-        label.textColor = .white
-        label.backgroundColor = Appearance.customBackground
+        label.textColor = .black
+        label.backgroundColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -63,10 +61,10 @@ class SubscribeViewController: UIViewController {
     let termsOfServiceButton : UIButton = {
         let button = UIButton(type: .system) as UIButton
         button.setTitle(String.termsOfServiceTitle, for: .normal)
-        button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(.black, for: .normal)
         button.titleLabel?.textAlignment = .center
         button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
-        button.backgroundColor = Appearance.customBackground
+        button.backgroundColor = .white
         button.translatesAutoresizingMaskIntoConstraints = false
         button.isUserInteractionEnabled = true
         button.addTarget(self, action: #selector(termsOfServiceButtonTap(sender:)), for: .touchUpInside)
@@ -76,9 +74,9 @@ class SubscribeViewController: UIViewController {
     let privacyPolicyButton : UIButton = {
         let button = UIButton(type: .system) as UIButton
         button.setTitle(String.privacyButtonTitle, for: .normal)
-        button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
-        button.backgroundColor = Appearance.customBackground
+        button.backgroundColor = .white
         button.translatesAutoresizingMaskIntoConstraints = false
         button.isUserInteractionEnabled = true
         button.addTarget(self, action: #selector(privacyButtonTap(sender:)), for: .touchUpInside)
@@ -121,81 +119,31 @@ class SubscribeViewController: UIViewController {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-       
-        setUpLeftNavBar()
-        setUpRightNavBar()
-        
-        setUpViews()
-    }
-    
-    private func setUpLeftNavBar() {
-        let left = UIButton(type: .custom)
-        left.setTitle(String.navigationItemTitle, for: .normal)
-        left.setTitleColor(.white, for: .normal)
-        left.titleLabel?.font = UIFont.systemFont(ofSize: 30)
-        left.widthAnchor.constraint(equalToConstant: 44.0).isActive = true
-        left.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
-        left.layer.masksToBounds = true
-        left.contentMode = .scaleAspectFill
-        left.addTarget(self, action: #selector(leftBarButtonTapped(sender:)), for: .touchUpInside)
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: left)
-    }
-    
-    @objc private func leftBarButtonTapped(sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    func setUpRightNavBar() {
-        let right = UIButton(type: .custom)
-        right.setTitleColor(.white, for: .normal)
-        right.widthAnchor.constraint(equalToConstant: 100.0).isActive = true
-        right.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
-        right.contentMode = .scaleAspectFill
-        right.addTarget(self, action: #selector(setUpRightNavBarPop(sender:)), for: .touchUpInside)
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Orders", style: .plain, target: self, action: #selector(setUpRightNavBarPop(sender:)))
-    }
-    
-    @objc private func setUpRightNavBarPop(sender: UIButton) {
-        let vc = PickUpViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
     private func setUpViews() {
         
-        self.title = "Welcome to Chute Plus"
         navigationItem.hidesBackButton = true
         navigationController?.navigationBar.isHidden = false
         
-        view.backgroundColor = Appearance.customBackground
+        view.backgroundColor = .white
         
         view.addSubview(subscribeButton)
-        view.addSubview(welcomeToChutePlusImage)
         view.addSubview(welcomeToChutePlusLabel)
         view.addSubview(autoRenewMessageLabel)
         view.addSubview(termsOfServiceButton)
         view.addSubview(privacyPolicyButton)
         
-        subscribeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
+        subscribeButton.topAnchor.constraint(equalTo: welcomeToChutePlusLabel.topAnchor, constant: -75).isActive = true
         subscribeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         subscribeButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
         subscribeButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-     
-        welcomeToChutePlusImage.topAnchor.constraint(equalTo: subscribeButton.bottomAnchor, constant: 30).isActive = true
-        welcomeToChutePlusImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        welcomeToChutePlusImage.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        welcomeToChutePlusImage.heightAnchor.constraint(equalToConstant: 50).isActive = true
 
-        welcomeToChutePlusLabel.topAnchor.constraint(equalTo: welcomeToChutePlusImage.bottomAnchor, constant: 20).isActive = true
+        welcomeToChutePlusLabel.topAnchor.constraint(equalTo: autoRenewMessageLabel.topAnchor, constant: -50).isActive = true
         welcomeToChutePlusLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         welcomeToChutePlusLabel.widthAnchor.constraint(equalToConstant: 300).isActive = true
         welcomeToChutePlusLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
 
-        autoRenewMessageLabel.topAnchor.constraint(equalTo: welcomeToChutePlusLabel.bottomAnchor, constant: 10).isActive = true
         autoRenewMessageLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        autoRenewMessageLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         autoRenewMessageLabel.widthAnchor.constraint(equalToConstant: 350).isActive = true
         autoRenewMessageLabel.heightAnchor.constraint(equalToConstant: 250).isActive = true
 

@@ -170,7 +170,7 @@ class PickUpCell: UICollectionViewCell {
     }()
     
     func setUpViews() {
-        backgroundColor = Appearance.customBackground
+        backgroundColor = .white
         addSubview(timeStampLabel)
         addSubview(nameConstantLabel)
         addSubview(nameLabel)

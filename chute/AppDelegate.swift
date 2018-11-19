@@ -18,15 +18,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        let tabBarController = UITabBarController()
+        
+        let tabViewController1 = PickupTableViewController()
+        let tabViewController2 = PickUpDetailViewController()
+        let tabViewController3 = PickUpViewController()
+        let tabViewController4 = SubscribeViewController()
+        let tabViewController5 = PickUpInfoViewController()
+        
+        let controllers = [tabViewController1, tabViewController2, tabViewController3, tabViewController4, tabViewController5]
+        
+        tabBarController.viewControllers = controllers
+        
+        let navigationController = UINavigationController(rootViewController: tabBarController)
+        
         window = UIWindow(frame: UIScreen.main.bounds)
-        
-        let vc = LoginViewController()
-        let navigationController = UINavigationController(rootViewController: vc)
-        
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         
-        navigationController.navigationBar.isHidden = true
+        let firstImage = UIImage(named: "Shop")
+        let secondImage = UIImage(named: "Order")
+        let thirdImage = UIImage(named: "Receipts")
+        let fourthImage = UIImage(named: "Plus")
+        let fifthImage = UIImage(named: "Info")
+        
+        tabViewController1.tabBarItem = UITabBarItem(title: "Shop", image: firstImage, tag: 1)
+        
+        tabViewController2.tabBarItem = UITabBarItem(title: "Order", image: secondImage, tag: 2)
+        
+        tabViewController3.tabBarItem = UITabBarItem(title: "Receipts", image: thirdImage, tag: 3)
+        
+        tabViewController4.tabBarItem = UITabBarItem(title: "Plus", image: fourthImage, tag: 4)
+
+        tabViewController5.tabBarItem = UITabBarItem(title: "Info", image: fifthImage, tag: 5)
+        
+        tabBarController.tabBar.barTintColor = .white
+        
+        let image = UIImage(named: "Chute")
+        let imageView = UIImageView(image: image)
+        
+        let bannerWidth = navigationController.navigationBar.frame.size.width
+        let bannerHeight = navigationController.navigationBar.frame.size.height
+        
+        let bannerX = bannerWidth / 2 - (image?.size.width)! / 2
+        let bannerY = bannerHeight / 2 - (image?.size.height)! / 2
+        
+        imageView.frame = CGRect(x: bannerX, y: bannerY, width: bannerWidth, height: bannerHeight)
+        imageView.contentMode = .scaleAspectFit
+        
+        navigationController.navigationBar.topItem?.titleView = imageView
         
         Appearance.setUpAppearance()
         
@@ -75,4 +115,3 @@ extension UIViewController {
         view.endEditing(true)
     }
 }
-

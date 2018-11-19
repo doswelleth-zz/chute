@@ -104,7 +104,6 @@ extension String {
     
     // Subscription
     
-    static var navigationItemTitle = "◀︎"
     static var subscribeButtonTitle = "Subscribe $19.99/mo."
     static var welcomeToChutePlusLabelText = "Unlimited 2-Day Turnaround Pick Ups"
     static var termsOfServiceTitle = "Terms of Service"
