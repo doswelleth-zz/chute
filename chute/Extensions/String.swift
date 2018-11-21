@@ -39,11 +39,18 @@ extension String {
     static var messageTitle = "Please enter all fields correctly"
     static var actionTitle = "Okay"
     
-    // Welcome
+    // Profile
     
-    static var welcomeLabelText = "Welcome To Chute"
-    static var getStartedButtonTitle = "Get Started"
+    static var shopButtonTitle = "Shop"
+    static var ordersButtonTitle = "Orders"
+    static var subscribeButtonTitle2 = "Subscribe"
+    static var faqButtonTitle = "FAQ"
+    static var ceoLabelTitle = "Reid Monconda, Chief Executive Officer"
     
+    static var dashboardTitle = "Dashboard"
+    
+    static var backButton = "◀"
+
     // Selection View
     
     static var selectAPickUpText = "Select a Pick Up"
@@ -53,7 +60,6 @@ extension String {
 
     // Pick Up
     
-    static var ordersTitle = "Orders"
     static var customizationLabel = "Customization"
     static var informationLabel = "Information"
     static var confirmationLabel = "Confirmation"
@@ -111,7 +117,7 @@ extension String {
     
     static var subscriptionText = """
 
-    Payment of $19.99 will be charged to the user's iTunes account at confirmation of purchase.
+    Payment of $19.99 will be charged to your iTunes' account at confirmation of purchase.
     
     Subscription to Chute Plus automatically renews unless auto-renew is turned off at least 24 hours before the end of the current period.
     
@@ -122,4 +128,6 @@ extension String {
     Any unused portion of a free trial period, if offered, will be forfeited when a user purchases a subscription to that publication, where applicable.
     
     """
+    
+    static var profileBackground = "Mihai Stefan"
 }

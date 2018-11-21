@@ -21,7 +21,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         setUpViews()
-                
+        
         let hasLogin = UserDefaults.standard.bool(forKey: String.hasLoginKey)
         
         if hasLogin {
@@ -29,7 +29,6 @@ class LoginViewController: UIViewController {
             signInButton.tag = signInButtonTag
             touchIDButton.isHidden = false
             touchIDButton.isUserInteractionEnabled = true
-            
         } else {
             signInButton.setTitle(String.signUpButtonTitle, for: .normal)
             signInButton.tag = signUpButtonTag
@@ -52,6 +51,15 @@ class LoginViewController: UIViewController {
     var passwordItems: [KeychainPasswordItem] = []
     let signUpButtonTag = 0
     let signInButtonTag = 1
+    
+    let imageView: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "Background")
+        image.alpha = 0.5
+        image.contentMode = .scaleAspectFill
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
     
     let logoImage: UIImageView = {
         let image = UIImageView()
@@ -168,10 +176,10 @@ class LoginViewController: UIViewController {
             
             UserDefaults.standard.set(true, forKey: String.hasLoginKey)
             signInButton.tag = signInButtonTag
-            presentPickupTableViewController()
+            presentShopTableViewController()
         } else if sender.tag == signInButtonTag {
             if checkLogin(username: newAccountName, password: newPassword) {
-                presentPickupTableViewController()
+                presentShopTableViewController()
             } else {
                 showLoginFailedAlert()
             }
@@ -225,10 +233,9 @@ class LoginViewController: UIViewController {
         }
     }
     
-    private func presentPickupTableViewController() {
-        let vc = ShopTableViewController()
-        self.navigationController?.modalPresentationStyle = .overFullScreen
-        self.present(vc, animated: true, completion: nil)
+    private func presentShopTableViewController() {
+        let vc = DashboardViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     // Touch ID
@@ -254,17 +261,18 @@ class LoginViewController: UIViewController {
                 alert.addAction(action)
                 self?.present(alert, animated: true)
             } else {
-                self?.presentPickupTableViewController()
+                self?.presentShopTableViewController()
             }
         }
     }
     
     private func setUpViews() {
         
-        view.backgroundColor = Appearance.customBackground
+        view.backgroundColor = .white
         
         touchIDButton.isHidden = !touch.canEvaluatePolicy()
         
+        view.addSubview(imageView)
         view.addSubview(logoLabel)
         view.addSubview(logoSubtitle)
         
@@ -272,6 +280,11 @@ class LoginViewController: UIViewController {
         view.addSubview(passwordTextField)
         view.addSubview(signInButton)
         view.addSubview(touchIDButton)
+        
+        imageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: view.frame.size.width).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: view.frame.size.height).isActive = true
         
         logoLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         logoLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 75).isActive = true

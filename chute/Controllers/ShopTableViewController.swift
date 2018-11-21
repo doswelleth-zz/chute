@@ -15,8 +15,12 @@ class ShopTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.delegate = self
+        tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
     }
+    
+    var ordersController: OrdersController?
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
@@ -40,6 +44,7 @@ class ShopTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = ShopDetailViewController()
+        vc.ordersController = ordersController
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

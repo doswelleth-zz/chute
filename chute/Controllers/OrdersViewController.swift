@@ -12,15 +12,15 @@ import UserNotifications
 private let reuseIdentifier = "reuseIdentifier"
 
 class OrdersViewController: UIViewController {
-    
-    let pickUpController = PickUpController()
-    var sortedPickUps: [PickUp] = []
+
+    var ordersController = OrdersController()
+    var sortedOrders: [Order] = []
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         DispatchQueue.main.async {
-            self.sortedPickUps = self.pickUpController.pickUps.sorted(by: {$0.timestamp > $1.timestamp})
-            self.pickUpController.decode()
+            self.sortedOrders = self.ordersController.orders.sorted(by: {$0.timestamp > $1.timestamp})
+            self.ordersController.decode()
             self.collectionView.reloadData()
         }
     }
@@ -29,28 +29,98 @@ class OrdersViewController: UIViewController {
         super.viewDidLoad()
         
         setUpCollectionView()
+        setUpViews()
         
-        self.sortedPickUps = self.pickUpController.pickUps.sorted(by: { $0.timestamp > $1.timestamp })
-        self.pickUpController.decode()
+        self.sortedOrders = self.ordersController.orders.sorted(by: { $0.timestamp > $1.timestamp })
+        self.ordersController.decode()
         self.collectionView.reloadData()
         
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.backgroundColor = .white
-        collectionView.register(PickUpCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.backgroundColor = .black
+        collectionView.register(OrdersCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
     
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        let pickUpVC = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        pickUpVC.alwaysBounceVertical = true
-        pickUpVC.showsVerticalScrollIndicator = false
-        return pickUpVC
+        let ordersVC = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        ordersVC.alwaysBounceVertical = true
+        ordersVC.showsVerticalScrollIndicator = false
+        return ordersVC
     }()
     
     private func setUpCollectionView() {
         view.addSubview(collectionView)
         collectionView.frame = view.frame
+    }
+    
+    let backButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle(String.backButton, for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
+        button.adjustsImageWhenHighlighted = false
+        button.addTarget(self, action: #selector(backBarButtonTapped(sender:)), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    @objc private func backBarButtonTapped(sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    let chuteImageView: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "Chute")
+        image.contentMode = .scaleAspectFill
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
+    
+    let imageView: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "OrdersBackground")
+        image.contentMode = .scaleAspectFill
+        image.clipsToBounds = true
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
+    
+    let ordersLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Your list of orders will be here"
+        label.textColor = .white
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight(rawValue: -0.2))
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private func setUpViews() {
+        view.addSubview(imageView)
+        view.addSubview(backButton)
+        imageView.addSubview(chuteImageView)
+        imageView.addSubview(ordersLabel)
+        
+        backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 50.0).isActive = true
+        backButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30).isActive = true
+        backButton.widthAnchor.constraint(equalToConstant: 60.0).isActive = true
+        backButton.heightAnchor.constraint(equalToConstant: 60.0).isActive = true
+        
+        chuteImageView.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 50.0).isActive = true
+        chuteImageView.centerXAnchor.constraint(equalTo: imageView.centerXAnchor).isActive = true
+        chuteImageView.widthAnchor.constraint(equalToConstant: 80.0).isActive = true
+        chuteImageView.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
+        
+        imageView.centerXAnchor.constraint(equalTo: imageView.centerXAnchor).isActive = true
+        imageView.centerYAnchor.constraint(equalTo: imageView.centerYAnchor).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: view.frame.size.width).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: view.frame.size.height).isActive = true
+        
+        ordersLabel.centerXAnchor.constraint(equalTo: imageView.centerXAnchor).isActive = true
+        ordersLabel.centerYAnchor.constraint(equalTo: imageView.centerYAnchor).isActive = true
+        ordersLabel.widthAnchor.constraint(equalToConstant: view.frame.size.width).isActive = true
+        ordersLabel.heightAnchor.constraint(equalToConstant: 22).isActive = true
     }
 }
 
@@ -62,47 +132,47 @@ extension OrdersViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return sortedPickUps.count
+        return sortedOrders.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PickUpCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! OrdersCell
         
-        let pickUp = sortedPickUps[indexPath.item]
+        let order = sortedOrders[indexPath.item]
         
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         formatter.timeStyle = .short
         
-        cell.timeStampLabel.text = formatter.string(from: pickUp.timestamp)
-        cell.nameLabel.text = pickUp.name
-        cell.addressLabel.text = pickUp.address
-        cell.cityStateZipLabel.text = pickUp.cityStateZip
-        cell.typeLabel.text = pickUp.type
-        cell.hasChuteBagLabel.text = pickUp.hasChuteBag
-        cell.scheduleLabel.text = pickUp.schedule
-        cell.identifierLabel.text = pickUp.identifier
-        
+        cell.timeStampLabel.text = formatter.string(from: order.timestamp)
+        cell.nameLabel.text = order.name
+        cell.addressLabel.text = order.address
+        cell.cityStateZipLabel.text = order.cityStateZip
+        cell.typeLabel.text = order.type
+        cell.hasChuteBagLabel.text = order.hasChuteBag
+        cell.scheduleLabel.text = order.schedule
+        cell.identifierLabel.text = order.identifier
+                
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let pickUp = sortedPickUps[indexPath.item]
+        let order = sortedOrders[indexPath.item]
         
         let alert = UIAlertController(title: "Delete", message: "Permanently delete your order?", preferredStyle: .alert)
         let yes = UIAlertAction(title: "Yes", style: .destructive) { (actio) in
             
             DispatchQueue.main.async {
-                self.pickUpController.delete(pickUp: pickUp)
-                self.pickUpController.deleteFirebasePickUp(pickUp: pickUp, completion: { (error) in
+                self.ordersController.delete(order: order)
+                self.ordersController.deleteFirebaseOrder(order: order, completion: { (error) in
                     if let error = error {
                         
                         NSLog("Error deleting pick up \(error)")
                     }
                 })
-                self.sortedPickUps = self.pickUpController.pickUps.sorted(by: { $0.timestamp > $1.timestamp })
+                self.sortedOrders = self.ordersController.orders.sorted(by: { $0.timestamp > $1.timestamp })
                 
                 self.collectionView.reloadData()
             }
