@@ -10,7 +10,6 @@
 		4909F88621A2B3A800FBCFC2 /* ShopTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4909F88521A2B3A800FBCFC2 /* ShopTableViewController.swift */; };
 		4909F88821A2B3EE00FBCFC2 /* ShopDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4909F88721A2B3EE00FBCFC2 /* ShopDetailViewController.swift */; };
 		4909F88A21A2BBAB00FBCFC2 /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4909F88921A2BBAB00FBCFC2 /* OrdersViewController.swift */; };
-		4917206221A4A841006C63AE /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4917206121A4A841006C63AE /* TabBarController.swift */; };
 		4917206421A55B22006C63AE /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4917206321A55B22006C63AE /* DashboardViewController.swift */; };
 		491F6E38215DD7BF00AECA84 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491F6E37215DD7BF00AECA84 /* AppDelegate.swift */; };
 		491F6E3F215DD7C100AECA84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 491F6E3E215DD7C100AECA84 /* Assets.xcassets */; };
@@ -38,7 +37,6 @@
 		4909F88521A2B3A800FBCFC2 /* ShopTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopTableViewController.swift; sourceTree = "<group>"; };
 		4909F88721A2B3EE00FBCFC2 /* ShopDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailViewController.swift; sourceTree = "<group>"; };
 		4909F88921A2BBAB00FBCFC2 /* OrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
-		4917206121A4A841006C63AE /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		4917206321A55B22006C63AE /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		491F6E34215DD7BF00AECA84 /* chute.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chute.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		491F6E37215DD7BF00AECA84 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -127,7 +125,6 @@
 		491F6E4A215DD7DB00AECA84 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4917206121A4A841006C63AE /* TabBarController.swift */,
 				491F6E52215DD91500AECA84 /* LoginViewController.swift */,
 				4917206321A55B22006C63AE /* DashboardViewController.swift */,
 				4909F88521A2B3A800FBCFC2 /* ShopTableViewController.swift */,
@@ -363,7 +360,6 @@
 				4909F88A21A2BBAB00FBCFC2 /* OrdersViewController.swift in Sources */,
 				492E7C122160235D00255A5C /* SubscribeViewController.swift in Sources */,
 				49B413ED21A3C68A00FC224C /* OrdersCell.swift in Sources */,
-				4917206221A4A841006C63AE /* TabBarController.swift in Sources */,
 				492E7C0E215EBCB900255A5C /* Chute.xcdatamodeld in Sources */,
 				4976528821A3C95500E19308 /* InfoViewController.swift in Sources */,
 				4909F88821A2B3EE00FBCFC2 /* ShopDetailViewController.swift in Sources */,

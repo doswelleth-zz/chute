@@ -50,11 +50,23 @@ class SubscribeViewController: UIViewController {
         return image
     }()
     
+    let plusLabel : UILabel = {
+        let label = UILabel()
+        label.text = "PLUS"
+        label.textColor = .white
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 25, weight: UIFont.Weight(1.0))
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
     let subscribeButton : UIButton = {
         let button = UIButton(type: .system)
         button.setTitle(String.subscribeButtonTitle, for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        button.titleLabel?.font =  UIFont.systemFont(ofSize: 15, weight: UIFont.Weight(rawValue: -0.3))
         button.layer.cornerRadius = 10
         button.layer.borderColor = UIColor.white.cgColor
         button.layer.borderWidth = 1
@@ -65,13 +77,12 @@ class SubscribeViewController: UIViewController {
         return button
     }()
     
-    let welcomeToChutePlusLabel : UILabel = {
+    let unlimtedPickUpLabel : UILabel = {
         let label = UILabel()
-        label.text = String.welcomeToChutePlusLabelText
+        label.text = String.unlimitedPickUpLabelTitle
         label.textColor = .white
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 17)
-        label.numberOfLines = 0
         label.lineBreakMode = NSLineBreakMode.byWordWrapping
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -167,9 +178,10 @@ class SubscribeViewController: UIViewController {
         
         view.addSubview(subscribeImageView)
         view.addSubview(chuteImageView)
-        view.addSubview(subscribeButton)
-        view.addSubview(welcomeToChutePlusLabel)
+        view.addSubview(plusLabel)
+        view.addSubview(unlimtedPickUpLabel)
         view.addSubview(autoRenewMessageLabel)
+        view.addSubview(subscribeButton)
         view.addSubview(termsOfServiceButton)
         view.addSubview(privacyPolicyButton)
         
@@ -183,27 +195,32 @@ class SubscribeViewController: UIViewController {
         chuteImageView.widthAnchor.constraint(equalToConstant: 80.0).isActive = true
         chuteImageView.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
         
-        subscribeButton.topAnchor.constraint(equalTo: welcomeToChutePlusLabel.topAnchor, constant: -60.0).isActive = true
-        subscribeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        subscribeButton.widthAnchor.constraint(equalToConstant: 200.0).isActive = true
-        subscribeButton.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
+        plusLabel.topAnchor.constraint(equalTo: chuteImageView.bottomAnchor, constant: 20.0).isActive = true
+        plusLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        plusLabel.widthAnchor.constraint(equalToConstant: view.frame.size.width).isActive = true
+        plusLabel.heightAnchor.constraint(equalToConstant: 27).isActive = true
 
-        welcomeToChutePlusLabel.topAnchor.constraint(equalTo: autoRenewMessageLabel.topAnchor, constant: -50.0).isActive = true
-        welcomeToChutePlusLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        welcomeToChutePlusLabel.widthAnchor.constraint(equalToConstant: 300.0).isActive = true
-        welcomeToChutePlusLabel.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
+        unlimtedPickUpLabel.topAnchor.constraint(equalTo: autoRenewMessageLabel.topAnchor, constant: -30.0).isActive = true
+        unlimtedPickUpLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        unlimtedPickUpLabel.widthAnchor.constraint(equalToConstant: view.frame.size.width).isActive = true
+        unlimtedPickUpLabel.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
 
         autoRenewMessageLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         autoRenewMessageLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         autoRenewMessageLabel.widthAnchor.constraint(equalToConstant: 350.0).isActive = true
         autoRenewMessageLabel.heightAnchor.constraint(equalToConstant: 250.0).isActive = true
+        
+        subscribeButton.topAnchor.constraint(equalTo: autoRenewMessageLabel.bottomAnchor, constant: 30.0).isActive = true
+        subscribeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        subscribeButton.widthAnchor.constraint(equalToConstant: 200.0).isActive = true
+        subscribeButton.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
 
-        termsOfServiceButton.topAnchor.constraint(equalTo: autoRenewMessageLabel.bottomAnchor, constant: 30.0).isActive = true
+        termsOfServiceButton.topAnchor.constraint(equalTo: subscribeButton.bottomAnchor, constant: 30.0).isActive = true
         termsOfServiceButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20.0).isActive = true
         termsOfServiceButton.widthAnchor.constraint(equalToConstant: 150.0).isActive = true
         termsOfServiceButton.heightAnchor.constraint(equalToConstant: 18.0).isActive = true
 
-        privacyPolicyButton.topAnchor.constraint(equalTo: autoRenewMessageLabel.bottomAnchor, constant: 30.0).isActive = true
+        privacyPolicyButton.topAnchor.constraint(equalTo: subscribeButton.bottomAnchor, constant: 30.0).isActive = true
         privacyPolicyButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20.0) .isActive = true
         privacyPolicyButton.widthAnchor.constraint(equalToConstant: 150.0).isActive = true
         privacyPolicyButton.heightAnchor.constraint(equalToConstant: 18.0).isActive = true

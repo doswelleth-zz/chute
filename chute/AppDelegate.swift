@@ -22,28 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         let vc = LoginViewController()
         let navigationController = UINavigationController(rootViewController: vc)
-        navigationController.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
-        navigationController.navigationBar.barTintColor = Appearance.customBackground
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         
         navigationController.navigationBar.isHidden = true
-        
-//        let image = UIImage(named: "Chute")
-//        let imageView = UIImageView(image: image)
-//
-//        let bannerWidth = navigationController.navigationBar.frame.size.width
-//        let bannerHeight = navigationController.navigationBar.frame.size.height
-//
-//        let bannerX = bannerWidth / 2 - (image?.size.width)! / 2
-//        let bannerY = bannerHeight / 2 - (image?.size.height)! / 2
-//
-//        imageView.frame = CGRect(x: bannerX, y: bannerY, width: bannerWidth, height: bannerHeight)
-//
-//        imageView.contentMode = .scaleAspectFit
-//
-//        navigationController.navigationBar.topItem?.titleView = imageView
-//        
         
         Appearance.setUpAppearance()
         
