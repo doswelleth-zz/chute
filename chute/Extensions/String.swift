@@ -128,6 +128,4 @@ extension String {
     Any unused portion of a free trial period, if offered, will be forfeited when a user purchases a subscription to that publication, where applicable.
     
     """
-    
-    static var profileBackground = "Mihai Stefan"
 }

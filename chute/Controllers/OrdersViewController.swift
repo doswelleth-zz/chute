@@ -23,6 +23,10 @@ class OrdersViewController: UIViewController {
             self.ordersController.decode()
             self.collectionView.reloadData()
         }
+        self.ordersLabel.alpha = 0.0
+        UIView.animate(withDuration: 1.0) {
+            self.ordersLabel.alpha = 1.0
+        }
     }
     
     override func viewDidLoad() {
@@ -88,7 +92,7 @@ class OrdersViewController: UIViewController {
     
     let ordersLabel: UILabel = {
         let label = UILabel()
-        label.text = "Your list of orders will be here"
+        label.text = "Your list of orders will appear here"
         label.textColor = .white
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight(rawValue: -0.2))

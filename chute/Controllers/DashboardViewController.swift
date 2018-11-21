@@ -13,7 +13,23 @@ class DashboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUpViews()
+       setUpViews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.shopButton.alpha = 0
+        self.ordersButton.alpha = 0
+        self.subscribeButton.alpha = 0
+        self.faqButton.alpha = 0
+        
+        UIView.animate(withDuration: 1.0) {
+            self.shopButton.alpha = 1.0
+            self.ordersButton.alpha = 1.0
+            self.subscribeButton.alpha = 1.0
+            self.faqButton.alpha = 1.0
+        }
     }
     
     let imageView: UIImageView = {
