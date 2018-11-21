@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4909F88621A2B3A800FBCFC2 /* ShopTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4909F88521A2B3A800FBCFC2 /* ShopTableViewController.swift */; };
 		4909F88821A2B3EE00FBCFC2 /* ShopDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4909F88721A2B3EE00FBCFC2 /* ShopDetailViewController.swift */; };
 		4909F88A21A2BBAB00FBCFC2 /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4909F88921A2BBAB00FBCFC2 /* OrdersViewController.swift */; };
 		4917206421A55B22006C63AE /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4917206321A55B22006C63AE /* DashboardViewController.swift */; };
+		4917206821A609FA006C63AE /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4917206721A609FA006C63AE /* ShopViewController.swift */; };
+		4917206A21A60A2F006C63AE /* ShopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4917206921A60A2F006C63AE /* ShopCell.swift */; };
 		491F6E38215DD7BF00AECA84 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491F6E37215DD7BF00AECA84 /* AppDelegate.swift */; };
 		491F6E3F215DD7C100AECA84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 491F6E3E215DD7C100AECA84 /* Assets.xcassets */; };
 		491F6E42215DD7C100AECA84 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 491F6E40215DD7C100AECA84 /* LaunchScreen.storyboard */; };
@@ -34,10 +35,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4909F88521A2B3A800FBCFC2 /* ShopTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopTableViewController.swift; sourceTree = "<group>"; };
 		4909F88721A2B3EE00FBCFC2 /* ShopDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailViewController.swift; sourceTree = "<group>"; };
 		4909F88921A2BBAB00FBCFC2 /* OrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
 		4917206321A55B22006C63AE /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		4917206721A609FA006C63AE /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
+		4917206921A60A2F006C63AE /* ShopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCell.swift; sourceTree = "<group>"; };
 		491F6E34215DD7BF00AECA84 /* chute.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chute.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		491F6E37215DD7BF00AECA84 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		491F6E3E215DD7C100AECA84 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -127,7 +129,7 @@
 			children = (
 				491F6E52215DD91500AECA84 /* LoginViewController.swift */,
 				4917206321A55B22006C63AE /* DashboardViewController.swift */,
-				4909F88521A2B3A800FBCFC2 /* ShopTableViewController.swift */,
+				4917206721A609FA006C63AE /* ShopViewController.swift */,
 				4909F88721A2B3EE00FBCFC2 /* ShopDetailViewController.swift */,
 				4909F88921A2BBAB00FBCFC2 /* OrdersViewController.swift */,
 				492E7C112160235D00255A5C /* SubscribeViewController.swift */,
@@ -141,6 +143,7 @@
 			children = (
 				491F6E3E215DD7C100AECA84 /* Assets.xcassets */,
 				491F6E40215DD7C100AECA84 /* LaunchScreen.storyboard */,
+				4917206921A60A2F006C63AE /* ShopCell.swift */,
 				49B413EC21A3C68A00FC224C /* OrdersCell.swift */,
 			);
 			path = Views;
@@ -359,13 +362,14 @@
 				491F6E38215DD7BF00AECA84 /* AppDelegate.swift in Sources */,
 				4909F88A21A2BBAB00FBCFC2 /* OrdersViewController.swift in Sources */,
 				492E7C122160235D00255A5C /* SubscribeViewController.swift in Sources */,
+				4917206821A609FA006C63AE /* ShopViewController.swift in Sources */,
 				49B413ED21A3C68A00FC224C /* OrdersCell.swift in Sources */,
 				492E7C0E215EBCB900255A5C /* Chute.xcdatamodeld in Sources */,
 				4976528821A3C95500E19308 /* InfoViewController.swift in Sources */,
 				4909F88821A2B3EE00FBCFC2 /* ShopDetailViewController.swift in Sources */,
-				4909F88621A2B3A800FBCFC2 /* ShopTableViewController.swift in Sources */,
 				491F6E62215DE09800AECA84 /* String.swift in Sources */,
 				49B413EF21A3C70F00FC224C /* OrdersController.swift in Sources */,
+				4917206A21A60A2F006C63AE /* ShopCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

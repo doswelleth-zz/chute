@@ -66,7 +66,7 @@ class SubscribeViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle(String.subscribeButtonTitle, for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font =  UIFont.systemFont(ofSize: 15, weight: UIFont.Weight(rawValue: -0.3))
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         button.layer.cornerRadius = 10
         button.layer.borderColor = UIColor.white.cgColor
         button.layer.borderWidth = 1

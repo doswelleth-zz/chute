@@ -73,7 +73,7 @@ class DashboardViewController: UIViewController {
     }()
     
     @objc private func shopButtonTapped(sender: UIButton) {
-        let vc = ShopTableViewController()
+        let vc = ShopViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
