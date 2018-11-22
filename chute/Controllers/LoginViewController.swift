@@ -99,7 +99,7 @@ class LoginViewController: UIViewController {
         textField.font = UIFont.systemFont(ofSize: 25)
         textField.borderStyle = .none
         textField.autocapitalizationType = .none
-        textField.attributedPlaceholder = NSAttributedString(string: String.usernamePlaceholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        textField.attributedPlaceholder = NSAttributedString(string: String.usernamePlaceholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -112,7 +112,7 @@ class LoginViewController: UIViewController {
         textField.font = UIFont.systemFont(ofSize: 25)
         textField.borderStyle = .none
         textField.autocapitalizationType = .none
-        textField.attributedPlaceholder = NSAttributedString(string: String.passwordPlaceholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        textField.attributedPlaceholder = NSAttributedString(string: String.passwordPlaceholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         textField.isSecureTextEntry = true
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField

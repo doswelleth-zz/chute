@@ -9,13 +9,14 @@
 import UIKit
 
 private let reuseIdentifier = "reuseIdentifier"
-
 private let buttonColor = UIColor(red: 135.0/255.0, green: 206.0/255.0, blue: 255.0/255.0, alpha: 1.0)
 
 class ShopViewController: UIViewController {
     
-    var items = ["Wash"]
-
+    var cellImages: [String] = ["Wash", "Wash", "Wash"]
+    var cellLabels: [String] = ["Small - 1 Chute Bag, 2-3 day turnaround", "Medium - 1 Chute Bag, 2-3 day turnaround", "Large - 1 Chute Bag, 2-3 day turnaround"]
+    var cellDetails: [String] = ["$15.00", "$20.00", "$23.00"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,21 +26,28 @@ class ShopViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = .black
+        collectionView.alwaysBounceVertical = true
         collectionView.register(ShopCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
     
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        let ordersVC = UICollectionView(frame: .zero, collectionViewLayout: layout)
-//        ordersVC.alwaysBounceVertical = true
-        ordersVC.showsVerticalScrollIndicator = false
-        return ordersVC
+        let shopVC = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        shopVC.showsVerticalScrollIndicator = false
+        return shopVC
     }()
     
     private func setUpCollectionView() {
         view.addSubview(collectionView)
         collectionView.frame = view.frame
     }
+    
+    let containerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     let backButton: UIButton = {
         let button = UIButton(type: .system)
@@ -65,8 +73,14 @@ class ShopViewController: UIViewController {
     }()
     
     private func setUpViews() {
-        view.addSubview(chuteImageView)
+        view.addSubview(containerView)
+        containerView.addSubview(chuteImageView)
         view.addSubview(backButton)
+        
+        containerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        containerView.widthAnchor.constraint(equalToConstant: view.frame.size.width).isActive = true
+        containerView.heightAnchor.constraint(equalToConstant: 100.0).isActive = true
         
         backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 50.0).isActive = true
         backButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30).isActive = true
@@ -88,16 +102,16 @@ extension ShopViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return items.count
+        return cellLabels.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ShopCell
         
-        let item = items[indexPath.item]
-        
-        cell.dressShirtsImageView.image = UIImage(named: item)
+        cell.imageView.image = UIImage(named: cellImages[indexPath.item])
+        cell.textLabel.text = cellLabels[indexPath.item]
+        cell.detailTextLabel.text = cellDetails[indexPath.item]
         
         return cell
     }
@@ -126,11 +140,11 @@ extension ShopViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: view.frame.size.width, height: 80)
+        return CGSize(width: view.frame.size.width, height: 200)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         
-        return 20.0
+        return 30.0
     }
 }

@@ -19,29 +19,53 @@ class ShopCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    let dressShirtsImageView: UIImageView = {
+    let imageView: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
-        image.layer.cornerRadius = 25.0
-        image.layer.borderColor = UIColor.black.cgColor
-        image.layer.borderWidth = 1.0
+        image.translatesAutoresizingMaskIntoConstraints = false
         return image
+    }()
+    
+    let textLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight(-0.3))
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let detailTextLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight(-0.3))
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
     private func setUpViews() {
         backgroundColor = .black
         
-        layer.shadowColor = UIColor.darkGray.cgColor
-        layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
-        layer.shadowOpacity = 0.8
-        layer.shadowRadius = 2
+        addSubview(imageView)
+        addSubview(textLabel)
+        addSubview(detailTextLabel)
         
-        addSubview(dressShirtsImageView)
+        imageView.topAnchor.constraint(equalTo: topAnchor, constant: 30.0).isActive = true
+        imageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 30.0).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
-        dressShirtsImageView.topAnchor.constraint(equalTo: topAnchor, constant: 44.0).isActive = true
-        dressShirtsImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 10.0).isActive = true
-        dressShirtsImageView.widthAnchor.constraint(equalTo: widthAnchor, constant: 50.0).isActive = true
-        dressShirtsImageView.heightAnchor.constraint(equalTo: heightAnchor, constant: 50.0).isActive = true
+        textLabel.topAnchor.constraint(equalTo: topAnchor, constant: 30.0).isActive = true
+        textLabel.leftAnchor.constraint(equalTo: imageView.rightAnchor, constant: 20.0).isActive = true
+        textLabel.widthAnchor.constraint(equalToConstant: 250).isActive = true
+        textLabel.heightAnchor.constraint(equalToConstant: 58).isActive = true
         
+        detailTextLabel.topAnchor.constraint(equalTo: textLabel.bottomAnchor, constant: 10.0).isActive = true
+        detailTextLabel.leftAnchor.constraint(equalTo: imageView.rightAnchor, constant: 20.0).isActive = true
+        detailTextLabel.widthAnchor.constraint(equalToConstant: 250).isActive = true
+        detailTextLabel.heightAnchor.constraint(equalToConstant: 17).isActive = true
     }
 }
