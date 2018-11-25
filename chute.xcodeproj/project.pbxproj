@@ -61,6 +61,7 @@
 		49D9F9BE2182AF5C00816F35 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		49DAB09F2171699400E58966 /* IAPMembership.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPMembership.swift; sourceTree = "<group>"; };
 		49DAB0A1217169E600E58966 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
+		49E131B721AA602F00FAC0B3 /* chute.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = chute.entitlements; sourceTree = "<group>"; };
 		53B52B60BA324DA1E3713E6E /* Pods-chute.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chute.debug.xcconfig"; path = "Pods/Target Support Files/Pods-chute/Pods-chute.debug.xcconfig"; sourceTree = "<group>"; };
 		63DE8A0E9149A709C6D9993F /* Pods-chute.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chute.release.xcconfig"; path = "Pods/Target Support Files/Pods-chute/Pods-chute.release.xcconfig"; sourceTree = "<group>"; };
 		C06411668A462AD8B566455A /* Pods_chute.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_chute.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,6 +100,7 @@
 		491F6E36215DD7BF00AECA84 /* chute */ = {
 			isa = PBXGroup;
 			children = (
+				49E131B721AA602F00FAC0B3 /* chute.entitlements */,
 				491F6E37215DD7BF00AECA84 /* AppDelegate.swift */,
 				491F6E43215DD7C200AECA84 /* Info.plist */,
 				49D9F9BE2182AF5C00816F35 /* GoogleService-Info.plist */,
@@ -260,6 +262,11 @@
 				TargetAttributes = {
 					491F6E33215DD7BF00AECA84 = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -539,6 +546,7 @@
 			baseConfigurationReference = 53B52B60BA324DA1E3713E6E /* Pods-chute.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = chute/chute.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WEBVY2C5S6;
@@ -560,6 +568,7 @@
 			baseConfigurationReference = 63DE8A0E9149A709C6D9993F /* Pods-chute.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = chute/chute.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WEBVY2C5S6;

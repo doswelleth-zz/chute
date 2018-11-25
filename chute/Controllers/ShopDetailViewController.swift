@@ -21,6 +21,8 @@ class ShopDetailViewController: UIViewController, UITextFieldDelegate, UNUserNot
     var order: Order?
     var ordersController: OrdersController?
     
+    let shopCell = ShopCell()
+    
     let containerView: UIView = {
         let view = UIView()
         view.backgroundColor = Appearance.lightBackground
@@ -53,7 +55,6 @@ class ShopDetailViewController: UIViewController, UITextFieldDelegate, UNUserNot
     
     let sizeImageLabel: UILabel = {
         let label = UILabel()
-        label.text = "Small - 1 Chute Bag"
         label.textColor = .black
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight(rawValue: 3.0))
@@ -85,7 +86,7 @@ class ShopDetailViewController: UIViewController, UITextFieldDelegate, UNUserNot
         let textField = UITextField()
         textField.textColor = .black
         textField.textAlignment = .left
-        textField.attributedPlaceholder = NSAttributedString(string: "Type (laundry, dry cleaning)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        textField.attributedPlaceholder = NSAttributedString(string: "Type (small, medium, etc.)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         textField.tintColor = .black
         textField.font = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight(rawValue: -0.3))
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -216,7 +217,7 @@ class ShopDetailViewController: UIViewController, UITextFieldDelegate, UNUserNot
 
     func setUpViews() {
         view.backgroundColor = Appearance.lightBackground
-
+        
         scrollView.isScrollEnabled = true
         scrollView.backgroundColor = .clear
         scrollView.alwaysBounceVertical = true

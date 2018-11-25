@@ -117,13 +117,16 @@ extension ShopViewController: UICollectionViewDataSource {
         cell.imageView.image = UIImage(named: cellImages[indexPath.item])
         cell.textLabel.text = cellLabels[indexPath.item]
         cell.detailTextLabel.text = cellDetails[indexPath.item]
-        
+        cell.textLabel.tag = indexPath.row
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = ShopDetailViewController()
         vc.ordersController = ordersController
+        
+        let sizeImageLabel = cellLabels[indexPath.row]
+        vc.sizeImageLabel.text = sizeImageLabel
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
