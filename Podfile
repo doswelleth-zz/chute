@@ -8,6 +8,7 @@ target 'chute' do
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
 pod 'Firebase/DynamicLinks'
+pod 'FirebaseUI/Facebook'
 
   # Pods for chute
 

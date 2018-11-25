@@ -9,5 +9,6 @@
 import Foundation
 
 enum IAPMembership : String {
-    case autoRenewingSubscription = "com.Chute.Membership.chutememembership"
+    case autoRenewingSubscription = "com.Chute.Membership.autorenewing"
+    case consumableSubscription = "com.Chute.Membership.consumable"
 }

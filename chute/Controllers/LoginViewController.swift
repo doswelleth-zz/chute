@@ -52,29 +52,10 @@ class LoginViewController: UIViewController {
     let signUpButtonTag = 0
     let signInButtonTag = 1
     
-    let imageView: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "Background")
-        image.alpha = 0.5
-        image.contentMode = .scaleAspectFill
-        image.translatesAutoresizingMaskIntoConstraints = false
-        return image
-    }()
-    
-    let logoImage: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: String.logoImageName)
-        image.layer.cornerRadius = 10
-        image.clipsToBounds = true
-        image.contentMode = .scaleAspectFill
-        image.translatesAutoresizingMaskIntoConstraints = false
-        return image
-    }()
-    
     let logoLabel: UILabel = {
         let label = UILabel()
         label.text = String.logoLabelText
-        label.textColor = .white
+        label.textColor = Appearance.customBackground
         label.textAlignment = .center
         label.font = UIFont(name: String.logoLabelFont, size: 75)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -84,17 +65,17 @@ class LoginViewController: UIViewController {
     let logoSubtitle: UILabel = {
         let label = UILabel()
         label.text = String.logoSubtitleText
-        label.textColor = .white
+        label.textColor = .black
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight(rawValue: 0.1))
+        label.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight(rawValue: -0.3))
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     let usernameTextField: UITextField = {
         let textField = UITextField()
-        textField.textColor = .white
-        textField.tintColor = .white
+        textField.textColor = .black
+        textField.tintColor = .black
         textField.textAlignment = .left
         textField.font = UIFont.systemFont(ofSize: 25)
         textField.borderStyle = .none
@@ -106,8 +87,8 @@ class LoginViewController: UIViewController {
     
     let passwordTextField: UITextField = {
         let textField = UITextField()
-        textField.textColor = .white
-        textField.tintColor = .white
+        textField.textColor = .black
+        textField.tintColor = .black
         textField.textAlignment = .left
         textField.font = UIFont.systemFont(ofSize: 25)
         textField.borderStyle = .none
@@ -126,6 +107,7 @@ class LoginViewController: UIViewController {
         button.layer.cornerRadius = 10
         button.layer.borderColor = UIColor.white.cgColor
         button.layer.borderWidth = 1.5
+        button.backgroundColor = Appearance.customBackground
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -243,7 +225,11 @@ class LoginViewController: UIViewController {
     let touchIDButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle(String.touchIDTitle, for: .normal)
-        button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(Appearance.customBackground, for: .normal)
+        button.layer.cornerRadius = 10
+        button.layer.borderColor = Appearance.customBackground.cgColor
+        button.layer.borderWidth = 1.5
+        button.backgroundColor = .white
         button.addTarget(self, action: #selector(touchIDButtonTapped(sender:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -268,11 +254,10 @@ class LoginViewController: UIViewController {
     
     private func setUpViews() {
         
-        view.backgroundColor = .white
+        view.backgroundColor = Appearance.lightBackground
         
         touchIDButton.isHidden = !touch.canEvaluatePolicy()
         
-        view.addSubview(imageView)
         view.addSubview(logoLabel)
         view.addSubview(logoSubtitle)
         
@@ -280,19 +265,14 @@ class LoginViewController: UIViewController {
         view.addSubview(passwordTextField)
         view.addSubview(signInButton)
         view.addSubview(touchIDButton)
-        
-        imageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        imageView.widthAnchor.constraint(equalToConstant: view.frame.size.width).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: view.frame.size.height).isActive = true
-        
+    
         logoLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         logoLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 75).isActive = true
         logoLabel.widthAnchor.constraint(equalToConstant: view.frame.size.width).isActive = true
         logoLabel.heightAnchor.constraint(equalToConstant: 76).isActive = true
         
         logoSubtitle.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        logoSubtitle.topAnchor.constraint(equalTo: logoLabel.bottomAnchor, constant: 20).isActive = true
+        logoSubtitle.topAnchor.constraint(equalTo: logoLabel.bottomAnchor, constant: 10).isActive = true
         logoSubtitle.widthAnchor.constraint(equalToConstant: view.frame.size.width).isActive = true
         logoSubtitle.heightAnchor.constraint(equalToConstant: 21).isActive = true
         
@@ -308,13 +288,13 @@ class LoginViewController: UIViewController {
         
         signInButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         signInButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 50).isActive = true
-        signInButton.widthAnchor.constraint(equalToConstant: 125).isActive = true
+        signInButton.widthAnchor.constraint(equalToConstant: 300).isActive = true
         signInButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         touchIDButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         touchIDButton.topAnchor.constraint(equalTo: signInButton.bottomAnchor, constant: 30).isActive = true
-        touchIDButton.widthAnchor.constraint(equalToConstant: view.frame.size.width).isActive = true
-        touchIDButton.heightAnchor.constraint(equalToConstant: 18).isActive = true
+        touchIDButton.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        touchIDButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
     // Touch ID - Private

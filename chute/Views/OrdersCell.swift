@@ -169,7 +169,8 @@ class OrdersCell: UICollectionViewCell {
     }()
     
     func setUpViews() {
-        backgroundColor = .white
+        backgroundColor = Appearance.lightBackground
+
         addSubview(timeStampLabel)
         addSubview(nameConstantLabel)
         addSubview(nameLabel)
@@ -186,8 +187,8 @@ class OrdersCell: UICollectionViewCell {
         addSubview(identifierLabel)
         
         layer.borderWidth = 0.5
-        layer.borderColor = Appearance.customBackground.cgColor
-        
+        layer.borderColor = UIColor.black.cgColor
+            
         formatter.timeStyle = .medium
         formatter.dateStyle = .medium
         timeStampLabel.text = formatter.string(from: date)

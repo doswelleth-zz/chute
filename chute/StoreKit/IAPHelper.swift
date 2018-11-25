@@ -19,7 +19,10 @@ class IAPHelper: NSObject {
     let paymentQueue = SKPaymentQueue.default()
     
     func getProducts() {
-        let productIdentifier : Set = [IAPMembership.autoRenewingSubscription.rawValue]
+        let productIdentifier : Set = [
+            IAPMembership.autoRenewingSubscription.rawValue,
+            IAPMembership.consumableSubscription.rawValue
+        ]
         
         let request = SKProductsRequest(productIdentifiers: productIdentifier)
         request.delegate = self

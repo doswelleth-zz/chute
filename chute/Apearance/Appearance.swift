@@ -11,13 +11,11 @@ import UIKit
 enum Appearance {
     
     static var customBackground = UIColor(red: 135.0/255.0, green: 206.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+    static var lightBackground = UIColor(red: 250.0/255.0, green: 250.0/255.0, blue: 250.0/255.0, alpha: 1.0)
     
     static func setUpAppearance() {
-        UINavigationBar.appearance().tintColor = .white
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
-
-        UILabel.appearance().tintColor = .white
-        UITextField.appearance().tintColor = .white
+        UILabel.appearance().tintColor = .black
+        UITextField.appearance().tintColor = .black
     }
     
     static func applicationFont(with textStyle: UIFont.TextStyle, pointSize: CGFloat) -> UIFont {

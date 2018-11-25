@@ -1,18 +1,16 @@
 {
   "images" : [
     {
-      "idiom" : "iphone",
-      "filename" : "Truck-2.png",
+      "idiom" : "universal",
+      "filename" : "new logo.png",
       "scale" : "1x"
     },
     {
-      "idiom" : "iphone",
-      "filename" : "Truck-3.png",
+      "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "idiom" : "iphone",
-      "filename" : "Truck-4.png",
+      "idiom" : "universal",
       "scale" : "3x"
     }
   ],

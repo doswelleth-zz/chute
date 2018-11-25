@@ -9,8 +9,6 @@
 import UIKit
 import UserNotifications
 
-private let buttonColor = UIColor(red: 135.0/255.0, green: 206.0/255.0, blue: 255.0/255.0, alpha: 1.0)
-
 class ShopDetailViewController: UIViewController, UITextFieldDelegate, UNUserNotificationCenterDelegate {
 
     override func viewDidLoad() {
@@ -20,12 +18,12 @@ class ShopDetailViewController: UIViewController, UITextFieldDelegate, UNUserNot
         hideKeyboardWhenTappedAround()
     }
     
-    let order: Order? = nil
+    var order: Order?
     var ordersController: OrdersController?
     
     let containerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .black
+        view.backgroundColor = Appearance.lightBackground
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -33,7 +31,7 @@ class ShopDetailViewController: UIViewController, UITextFieldDelegate, UNUserNot
     let backButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle(String.backButton, for: .normal)
-        button.setTitleColor(buttonColor, for: .normal)
+        button.setTitleColor(Appearance.customBackground, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
         button.adjustsImageWhenHighlighted = false
         button.addTarget(self, action: #selector(backBarButtonTapped(sender:)), for: .touchUpInside)
@@ -56,7 +54,7 @@ class ShopDetailViewController: UIViewController, UITextFieldDelegate, UNUserNot
     let sizeImageLabel: UILabel = {
         let label = UILabel()
         label.text = "Small - 1 Chute Bag"
-        label.textColor = .white
+        label.textColor = .black
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight(rawValue: 3.0))
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -65,7 +63,7 @@ class ShopDetailViewController: UIViewController, UITextFieldDelegate, UNUserNot
     
     let timeStampLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        label.textColor = .black
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight(rawValue: -0.1))
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -74,10 +72,10 @@ class ShopDetailViewController: UIViewController, UITextFieldDelegate, UNUserNot
     
     let nameTextField: UITextField = {
         let textField = UITextField()
-        textField.textColor = .white
+        textField.textColor = .black
         textField.textAlignment = .left
         textField.attributedPlaceholder = NSAttributedString(string: "First & Last name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        textField.tintColor = .white
+        textField.tintColor = .black
         textField.font = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight(rawValue: -0.3))
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -85,10 +83,10 @@ class ShopDetailViewController: UIViewController, UITextFieldDelegate, UNUserNot
     
     let typeTextField: UITextField = {
         let textField = UITextField()
-        textField.textColor = .white
+        textField.textColor = .black
         textField.textAlignment = .left
         textField.attributedPlaceholder = NSAttributedString(string: "Type (laundry, dry cleaning)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        textField.tintColor = .white
+        textField.tintColor = .black
         textField.font = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight(rawValue: -0.3))
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -96,10 +94,10 @@ class ShopDetailViewController: UIViewController, UITextFieldDelegate, UNUserNot
     
     let hasChuteBagTextField: UITextField = {
         let textField = UITextField()
-        textField.textColor = .white
+        textField.textColor = .black
         textField.textAlignment = .left
         textField.attributedPlaceholder = NSAttributedString(string: "Have a Chute Bag?", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        textField.tintColor = .white
+        textField.tintColor = .black
         textField.font = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight(rawValue: -0.3))
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -107,10 +105,10 @@ class ShopDetailViewController: UIViewController, UITextFieldDelegate, UNUserNot
     
     let scheduleTextField: UITextField = {
         let textField = UITextField()
-        textField.textColor = .white
+        textField.textColor = .black
         textField.textAlignment = .left
         textField.attributedPlaceholder = NSAttributedString(string: "Schedule (one-time, weekly)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        textField.tintColor = .white
+        textField.tintColor = .black
         textField.font = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight(rawValue: -0.3))
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -118,10 +116,10 @@ class ShopDetailViewController: UIViewController, UITextFieldDelegate, UNUserNot
     
     let addressTextField: UITextField = {
         let textField = UITextField()
-        textField.textColor = .white
+        textField.textColor = .black
         textField.textAlignment = .left
         textField.attributedPlaceholder = NSAttributedString(string: "Address", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        textField.tintColor = .white
+        textField.tintColor = .black
         textField.font = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight(rawValue: -0.3))
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -129,8 +127,8 @@ class ShopDetailViewController: UIViewController, UITextFieldDelegate, UNUserNot
     
     let cityStateZipTextField: UITextField = {
         let textField = UITextField()
-        textField.textColor = .white
-        textField.tintColor = .white
+        textField.textColor = .black
+        textField.tintColor = .black
         textField.textAlignment = .left
         textField.attributedPlaceholder = NSAttributedString(string: "City State and Zip", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         textField.font = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight(rawValue: -0.3))
@@ -141,7 +139,7 @@ class ShopDetailViewController: UIViewController, UITextFieldDelegate, UNUserNot
     let identifierLabel: UILabel = {
         let label = UILabel()
         label.text = UUID().uuidString
-        label.textColor = .white
+        label.textColor = .black
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight(rawValue: -0.1))
         label.isUserInteractionEnabled = false
@@ -181,7 +179,9 @@ class ShopDetailViewController: UIViewController, UITextFieldDelegate, UNUserNot
                 }
             })
             
-            // TODO: IN APP PURCHASE
+            // TODO: Uncomment once StoreKit is implemented
+            
+//            IAPHelper.shared.purchase(product: .consumableSubscription)
             
             sendNotification()
         }
@@ -208,17 +208,15 @@ class ShopDetailViewController: UIViewController, UITextFieldDelegate, UNUserNot
     }
     
     private func popViewController() {
-        let vc = OrdersViewController()
-        guard let ordersController = ordersController else { return }
-        vc.ordersController = ordersController
-        navigationController?.popViewController(animated: true)
+        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
+        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
     }
     
     let scrollView = UIScrollView(frame: UIScreen.main.bounds)
 
     func setUpViews() {
-        view.backgroundColor = .black
-        
+        view.backgroundColor = Appearance.lightBackground
+
         scrollView.isScrollEnabled = true
         scrollView.backgroundColor = .clear
         scrollView.alwaysBounceVertical = true
@@ -322,7 +320,7 @@ class ShopDetailViewController: UIViewController, UITextFieldDelegate, UNUserNot
         
         payButton.topAnchor.constraint(equalTo: identifierLabel.bottomAnchor, constant: 50.0).isActive = true
         payButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        payButton.widthAnchor.constraint(equalToConstant: 125.0).isActive = true
+        payButton.widthAnchor.constraint(equalToConstant: 300.0).isActive = true
         payButton.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
     }
 }

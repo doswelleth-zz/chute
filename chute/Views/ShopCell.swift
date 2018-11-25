@@ -29,7 +29,7 @@ class ShopCell: UICollectionViewCell {
     let textLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.textColor = .white
+        label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight(-0.3))
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -39,7 +39,7 @@ class ShopCell: UICollectionViewCell {
     let detailTextLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.textColor = .white
+        label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight(-0.3))
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -47,8 +47,8 @@ class ShopCell: UICollectionViewCell {
     }()
     
     private func setUpViews() {
-        backgroundColor = .black
-        
+        backgroundColor = Appearance.lightBackground
+
         addSubview(imageView)
         addSubview(textLabel)
         addSubview(detailTextLabel)

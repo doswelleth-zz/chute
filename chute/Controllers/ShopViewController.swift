@@ -17,6 +17,8 @@ class ShopViewController: UIViewController {
     var cellLabels: [String] = ["Small - 1 Chute Bag, 2-3 day turnaround", "Medium - 1 Chute Bag, 2-3 day turnaround", "Large - 1 Chute Bag, 2-3 day turnaround"]
     var cellDetails: [String] = ["$15.00", "$20.00", "$23.00"]
     
+    let ordersController = OrdersController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,7 +27,8 @@ class ShopViewController: UIViewController {
         
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.backgroundColor = .black
+        collectionView.backgroundColor = Appearance.lightBackground
+
         collectionView.alwaysBounceVertical = true
         collectionView.register(ShopCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
@@ -44,7 +47,7 @@ class ShopViewController: UIViewController {
     
     let containerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .black
+        view.backgroundColor = Appearance.lightBackground
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -73,6 +76,8 @@ class ShopViewController: UIViewController {
     }()
     
     private func setUpViews() {
+        view.backgroundColor = Appearance.lightBackground
+        
         view.addSubview(containerView)
         containerView.addSubview(chuteImageView)
         view.addSubview(backButton)
@@ -117,12 +122,9 @@ extension ShopViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-//        let item = items[indexPath.item]
-        
         let vc = ShopDetailViewController()
+        vc.ordersController = ordersController
         self.navigationController?.pushViewController(vc, animated: true)
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {

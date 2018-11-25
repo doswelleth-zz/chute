@@ -66,7 +66,7 @@ class OrdersController {
         case delete = "DELETE"
     }
     
-    static let baseURL = URL(string: "https://chute-939fc.firebaseio.com/")!
+    static let baseURL = URL(string: "https://chute-59259.firebaseio.com/")!
     
     func put(order: Order, completion: @escaping (Error?) -> Void) {
         

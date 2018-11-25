@@ -15,7 +15,7 @@ extension String {
     static var logoLabelText = "chute"
     static var logoLabelFont = "REZ"
     
-    static var logoSubtitleText = "a superior laundry experience"
+    static var logoSubtitleText = "ask me about laundry"
     
     static var logoImageName = "logo"
     
@@ -43,11 +43,11 @@ extension String {
     
     static var shopButtonTitle = "Shop"
     static var ordersButtonTitle = "Orders"
-    static var subscribeButtonTitle2 = "Subscribe"
+    static var subscribeButtonTitle = "Plus"
     static var faqButtonTitle = "FAQ"
-    static var ceoLabelTitle = "Reid Monconda, Chief Executive Officer"
     
     static var dashboardTitle = "Dashboard"
+    static var shopTitle = "Shop"
     
     static var backButton = "◀"
 
@@ -110,7 +110,7 @@ extension String {
     
     // Subscription
     
-    static var subscribeButtonTitle = "Subscribe $19.99/mo."
+    static var subscribeButtonTitle2 = "Subscribe $19.99/mo."
     static var unlimitedPickUpLabelTitle = "Unlimited 2-Day Turnaround Orders"
     static var termsOfServiceTitle = "Terms of Service"
     static var privacyButtonTitle = "Privacy Policy"

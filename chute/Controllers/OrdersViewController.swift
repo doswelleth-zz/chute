@@ -41,7 +41,7 @@ class OrdersViewController: UIViewController {
         
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.backgroundColor = .black
+        collectionView.backgroundColor = Appearance.lightBackground
         collectionView.register(OrdersCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
     
@@ -58,10 +58,17 @@ class OrdersViewController: UIViewController {
         collectionView.frame = view.frame
     }
     
+    let containerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = Appearance.lightBackground
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     let backButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle(String.backButton, for: .normal)
-        button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(Appearance.customBackground, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
         button.adjustsImageWhenHighlighted = false
         button.addTarget(self, action: #selector(backBarButtonTapped(sender:)), for: .touchUpInside)
@@ -75,56 +82,48 @@ class OrdersViewController: UIViewController {
     
     let chuteImageView: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "Chute")
+        image.image = UIImage(named: "Chute3")
         image.contentMode = .scaleAspectFill
-        image.translatesAutoresizingMaskIntoConstraints = false
-        return image
-    }()
-    
-    let imageView: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "OrdersBackground")
-        image.contentMode = .scaleAspectFill
-        image.clipsToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
     
     let ordersLabel: UILabel = {
         let label = UILabel()
-        label.text = "Your list of orders will appear here"
-        label.textColor = .white
+        label.text = "List of Orders"
+        label.textColor = .lightGray
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight(rawValue: -0.2))
+        label.font = UIFont.systemFont(ofSize: 20.0, weight: UIFont.Weight(rawValue: 1.0))
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private func setUpViews() {
-        view.addSubview(imageView)
+        view.backgroundColor = Appearance.customBackground
+        view.addSubview(containerView)
         view.addSubview(backButton)
-        imageView.addSubview(chuteImageView)
-        imageView.addSubview(ordersLabel)
+        containerView.addSubview(chuteImageView)
+        containerView.addSubview(ordersLabel)
+        
+        containerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        containerView.widthAnchor.constraint(equalToConstant: view.frame.size.width).isActive = true
+        containerView.heightAnchor.constraint(equalToConstant: 130.0).isActive = true
         
         backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 50.0).isActive = true
         backButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30).isActive = true
         backButton.widthAnchor.constraint(equalToConstant: 60.0).isActive = true
         backButton.heightAnchor.constraint(equalToConstant: 60.0).isActive = true
         
-        chuteImageView.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 50.0).isActive = true
-        chuteImageView.centerXAnchor.constraint(equalTo: imageView.centerXAnchor).isActive = true
+        chuteImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50.0).isActive = true
+        chuteImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         chuteImageView.widthAnchor.constraint(equalToConstant: 80.0).isActive = true
         chuteImageView.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
         
-        imageView.centerXAnchor.constraint(equalTo: imageView.centerXAnchor).isActive = true
-        imageView.centerYAnchor.constraint(equalTo: imageView.centerYAnchor).isActive = true
-        imageView.widthAnchor.constraint(equalToConstant: view.frame.size.width).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: view.frame.size.height).isActive = true
-        
-        ordersLabel.centerXAnchor.constraint(equalTo: imageView.centerXAnchor).isActive = true
-        ordersLabel.centerYAnchor.constraint(equalTo: imageView.centerYAnchor).isActive = true
+        ordersLabel.topAnchor.constraint(equalTo: chuteImageView.bottomAnchor, constant: 30.0).isActive = true
+        ordersLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         ordersLabel.widthAnchor.constraint(equalToConstant: view.frame.size.width).isActive = true
-        ordersLabel.heightAnchor.constraint(equalToConstant: 22).isActive = true
+        ordersLabel.heightAnchor.constraint(equalToConstant: 22.0).isActive = true
     }
 }
 
@@ -210,12 +209,12 @@ extension OrdersViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         
-        return CGSize(width: 0, height: 100)
+        return CGSize(width: 0, height: 150.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         
-        return CGSize(width: 0, height: 30)
+        return CGSize(width: 0, height: 30.0)
     }
 }
 
@@ -223,7 +222,7 @@ extension OrdersViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: view.frame.size.width, height: 350)
+        return CGSize(width: view.frame.size.width, height: 350.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

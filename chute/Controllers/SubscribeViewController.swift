@@ -33,18 +33,9 @@ class SubscribeViewController: UIViewController {
         self.view.addGestureRecognizer(swipeDown)
     }
     
-    let subscribeImageView: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "SubscribeBackground")
-        image.contentMode = .scaleAspectFill
-        image.alpha = 0.8
-        image.translatesAutoresizingMaskIntoConstraints = false
-        return image
-    }()
-    
     let chuteImageView: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "Chute")
+        image.image = UIImage(named: "Chute3")
         image.contentMode = .scaleAspectFill
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
@@ -53,7 +44,7 @@ class SubscribeViewController: UIViewController {
     let plusLabel : UILabel = {
         let label = UILabel()
         label.text = "PLUS"
-        label.textColor = .white
+        label.textColor = Appearance.customBackground
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 25, weight: UIFont.Weight(1.0))
         label.numberOfLines = 0
@@ -64,13 +55,13 @@ class SubscribeViewController: UIViewController {
 
     let subscribeButton : UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle(String.subscribeButtonTitle, for: .normal)
+        button.setTitle(String.subscribeButtonTitle2, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         button.layer.cornerRadius = 10
         button.layer.borderColor = UIColor.white.cgColor
         button.layer.borderWidth = 1
-        button.backgroundColor = .clear
+        button.backgroundColor = Appearance.customBackground
         button.titleLabel?.textAlignment = .center
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(subscribeButtonTap(sender:)), for: .touchUpInside)
@@ -80,7 +71,7 @@ class SubscribeViewController: UIViewController {
     let unlimtedPickUpLabel : UILabel = {
         let label = UILabel()
         label.text = String.unlimitedPickUpLabelTitle
-        label.textColor = .white
+        label.textColor = .black
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 17)
         label.lineBreakMode = NSLineBreakMode.byWordWrapping
@@ -91,7 +82,7 @@ class SubscribeViewController: UIViewController {
     let autoRenewMessageLabel : UILabel = {
         let label = UILabel()
         label.text = String.subscriptionText
-        label.textColor = .white
+        label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight(rawValue: -0.3))
         label.numberOfLines = 0
         label.lineBreakMode = NSLineBreakMode.byWordWrapping
@@ -104,7 +95,7 @@ class SubscribeViewController: UIViewController {
     let termsOfServiceButton : UIButton = {
         let button = UIButton(type: .system) as UIButton
         button.setTitle(String.termsOfServiceTitle, for: .normal)
-        button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(.black, for: .normal)
         button.titleLabel?.textAlignment = .center
         button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -116,7 +107,7 @@ class SubscribeViewController: UIViewController {
     let privacyPolicyButton : UIButton = {
         let button = UIButton(type: .system) as UIButton
         button.setTitle(String.privacyButtonTitle, for: .normal)
-        button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.isUserInteractionEnabled = true
@@ -125,6 +116,9 @@ class SubscribeViewController: UIViewController {
     }()
     
     @objc private func subscribeButtonTap(sender: UIButton) {
+        
+        // TODO: Uncomment once StoreKit is implemented
+        
 //        IAPHelper.shared.purchase(product: .autoRenewingSubscription)
     }
     
@@ -174,9 +168,8 @@ class SubscribeViewController: UIViewController {
     
     private func setUpViews() {
         
-        view.backgroundColor = .white
-        
-        view.addSubview(subscribeImageView)
+        view.backgroundColor = Appearance.lightBackground
+
         view.addSubview(chuteImageView)
         view.addSubview(plusLabel)
         view.addSubview(unlimtedPickUpLabel)
@@ -184,11 +177,6 @@ class SubscribeViewController: UIViewController {
         view.addSubview(subscribeButton)
         view.addSubview(termsOfServiceButton)
         view.addSubview(privacyPolicyButton)
-        
-        subscribeImageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        subscribeImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        subscribeImageView.widthAnchor.constraint(equalToConstant: view.frame.size.width).isActive = true
-        subscribeImageView.heightAnchor.constraint(equalToConstant: view.frame.size.height).isActive = true
         
         chuteImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50.0).isActive = true
         chuteImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -212,7 +200,7 @@ class SubscribeViewController: UIViewController {
         
         subscribeButton.topAnchor.constraint(equalTo: autoRenewMessageLabel.bottomAnchor, constant: 30.0).isActive = true
         subscribeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        subscribeButton.widthAnchor.constraint(equalToConstant: 200.0).isActive = true
+        subscribeButton.widthAnchor.constraint(equalToConstant: 300.0).isActive = true
         subscribeButton.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
 
         termsOfServiceButton.topAnchor.constraint(equalTo: subscribeButton.bottomAnchor, constant: 30.0).isActive = true
