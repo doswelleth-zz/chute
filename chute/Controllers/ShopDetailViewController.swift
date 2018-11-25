@@ -88,7 +88,8 @@ class ShopDetailViewController: UIViewController, UITextFieldDelegate, UNUserNot
         textField.textAlignment = .left
         textField.attributedPlaceholder = NSAttributedString(string: "Type (small, medium, etc.)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         textField.tintColor = .black
-        textField.font = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight(rawValue: -0.3))
+        textField.font = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight(rawValue: -0.1))
+        textField.isUserInteractionEnabled = false
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()

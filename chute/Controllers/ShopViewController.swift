@@ -14,7 +14,7 @@ private let buttonColor = UIColor(red: 135.0/255.0, green: 206.0/255.0, blue: 25
 class ShopViewController: UIViewController {
     
     var cellImages: [String] = ["Wash", "Wash", "Wash"]
-    var cellLabels: [String] = ["Small - 1 Chute Bag, 2-3 day turnaround", "Medium - 1 Chute Bag, 2-3 day turnaround", "Large - 1 Chute Bag, 2-3 day turnaround"]
+    var cellLabels: [String] = ["Small - 1 Chute Bag, 2-3 days", "Medium - 1 Chute Bag, 2-3 days", "Large - 1 Chute Bag, 2-3 days"]
     var cellDetails: [String] = ["$15.00", "$20.00", "$23.00"]
     
     let ordersController = OrdersController()
@@ -126,7 +126,8 @@ extension ShopViewController: UICollectionViewDataSource {
         vc.ordersController = ordersController
         
         let sizeImageLabel = cellLabels[indexPath.row]
-        vc.sizeImageLabel.text = sizeImageLabel
+//        vc.sizeImageLabel.text = sizeImageLabel
+        vc.typeTextField.text = sizeImageLabel
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
