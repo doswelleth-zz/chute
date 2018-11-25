@@ -154,7 +154,6 @@ extension OrdersViewController: UICollectionViewDataSource {
         cell.cityStateZipLabel.text = order.cityStateZip
         cell.typeLabel.text = order.type
         cell.hasChuteBagLabel.text = order.hasChuteBag
-        cell.scheduleLabel.text = order.schedule
         cell.identifierLabel.text = order.identifier
                 
         return cell

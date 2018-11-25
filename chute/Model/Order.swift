@@ -14,7 +14,6 @@ struct Order: Codable, Equatable {
     let cityStateZip: String
     let type: String
     let hasChuteBag: String
-    let schedule: String
     let identifier: String
     let timestamp: Date
     

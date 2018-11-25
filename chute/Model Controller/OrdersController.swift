@@ -14,9 +14,9 @@ class OrdersController {
     
     private(set) var orders: [Order] = []
 
-    func createOrder(with name: String, address: String, cityStateZip: String, type: String, hasChuteBag: String, schedule: String, identifier: String, timestamp: Date) {
+    func createOrder(with name: String, address: String, cityStateZip: String, type: String, hasChuteBag: String, identifier: String, timestamp: Date) {
         
-        let order = Order(name: name, address: address, cityStateZip: cityStateZip, type: type, hasChuteBag: hasChuteBag, schedule: schedule, identifier: identifier, timestamp: timestamp)
+        let order = Order(name: name, address: address, cityStateZip: cityStateZip, type: type, hasChuteBag: hasChuteBag, identifier: identifier, timestamp: timestamp)
         orders.append(order)
         encode()
     }
@@ -99,9 +99,9 @@ class OrdersController {
     
     // Create a new pick up using the PUT method above
     
-    func createFirebaseOrder(with name: String, address: String, cityStateZip: String, type: String, hasChuteBag: String, schedule: String, identifier: String, timestamp: Date, completion: @escaping (Error?) -> Void) {
+    func createFirebaseOrder(with name: String, address: String, cityStateZip: String, type: String, hasChuteBag: String, identifier: String, timestamp: Date, completion: @escaping (Error?) -> Void) {
         
-        let order = Order(name: name, address: address, cityStateZip: cityStateZip, type: type, hasChuteBag: hasChuteBag, schedule: schedule, identifier: identifier, timestamp: timestamp)
+        let order = Order(name: name, address: address, cityStateZip: cityStateZip, type: type, hasChuteBag: hasChuteBag, identifier: identifier, timestamp: timestamp)
         
         // Pass in completion of createFirebasePickUp() into the completion closure of pull() - this will forward the completion of put() to the caller of createFirebasePickUp() so the error can be handled there.
         

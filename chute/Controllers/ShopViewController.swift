@@ -126,7 +126,6 @@ extension ShopViewController: UICollectionViewDataSource {
         vc.ordersController = ordersController
         
         let sizeImageLabel = cellLabels[indexPath.row]
-//        vc.sizeImageLabel.text = sizeImageLabel
         vc.typeTextField.text = sizeImageLabel
         self.navigationController?.pushViewController(vc, animated: true)
     }

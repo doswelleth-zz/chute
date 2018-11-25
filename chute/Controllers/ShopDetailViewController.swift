@@ -53,15 +53,6 @@ class ShopDetailViewController: UIViewController, UITextFieldDelegate, UNUserNot
         return image
     }()
     
-    let sizeImageLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .black
-        label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight(rawValue: 3.0))
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
     let timeStampLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
@@ -99,17 +90,6 @@ class ShopDetailViewController: UIViewController, UITextFieldDelegate, UNUserNot
         textField.textColor = .black
         textField.textAlignment = .left
         textField.attributedPlaceholder = NSAttributedString(string: "Have a Chute Bag?", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        textField.tintColor = .black
-        textField.font = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight(rawValue: -0.3))
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        return textField
-    }()
-    
-    let scheduleTextField: UITextField = {
-        let textField = UITextField()
-        textField.textColor = .black
-        textField.textAlignment = .left
-        textField.attributedPlaceholder = NSAttributedString(string: "Schedule (one-time, weekly)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         textField.tintColor = .black
         textField.font = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight(rawValue: -0.3))
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -164,18 +144,18 @@ class ShopDetailViewController: UIViewController, UITextFieldDelegate, UNUserNot
     }()
     
     @objc private func payButtonTap(sender: UIButton) {
-        if nameTextField.text!.isEmpty || addressTextField.text!.isEmpty || cityStateZipTextField.text!.isEmpty || typeTextField.text!.isEmpty || hasChuteBagTextField.text!.isEmpty || scheduleTextField.text!.isEmpty {
+        if nameTextField.text!.isEmpty || addressTextField.text!.isEmpty || cityStateZipTextField.text!.isEmpty || typeTextField.text!.isEmpty || hasChuteBagTextField.text!.isEmpty {
             let alert = UIAlertController(title: "Error", message: "Please enter all fields correctly", preferredStyle: .alert)
             let action = UIAlertAction(title: "Okay", style: .default) { (action) in
             }
             alert.addAction(action)
             present(alert, animated: true, completion: nil)
         } else {
-            guard let name = nameTextField.text, let address = addressTextField.text, let cityStateZip = cityStateZipTextField.text, let type = typeTextField.text, let hasChuteBag = hasChuteBagTextField.text, let schedule = scheduleTextField.text, let identifier = identifierLabel.text else { return }
+            guard let name = nameTextField.text, let address = addressTextField.text, let cityStateZip = cityStateZipTextField.text, let type = typeTextField.text, let hasChuteBag = hasChuteBagTextField.text, let identifier = identifierLabel.text else { return }
             
-            ordersController?.createOrder(with: name, address: address, cityStateZip: cityStateZip, type: type, hasChuteBag: hasChuteBag, schedule: schedule, identifier: identifier, timestamp: Date())
+            ordersController?.createOrder(with: name, address: address, cityStateZip: cityStateZip, type: type, hasChuteBag: hasChuteBag, identifier: identifier, timestamp: Date())
             
-            ordersController?.createFirebaseOrder(with: name, address: address, cityStateZip: cityStateZip, type: type, hasChuteBag: hasChuteBag, schedule: schedule, identifier: identifier, timestamp: Date(), completion: { (error) in
+            ordersController?.createFirebaseOrder(with: name, address: address, cityStateZip: cityStateZip, type: type, hasChuteBag: hasChuteBag, identifier: identifier, timestamp: Date(), completion: { (error) in
                 if let error = error {
                     NSLog("Error occured while creating a pickup: \(error)")
                 }
@@ -231,12 +211,10 @@ class ShopDetailViewController: UIViewController, UITextFieldDelegate, UNUserNot
         scrollView.addSubview(containerView)
         scrollView.addSubview(backButton)
         scrollView.addSubview(chuteImageView)
-        scrollView.addSubview(sizeImageLabel)
         scrollView.addSubview(timeStampLabel)
         scrollView.addSubview(nameTextField)
         scrollView.addSubview(typeTextField)
         scrollView.addSubview(hasChuteBagTextField)
-        scrollView.addSubview(scheduleTextField)
         scrollView.addSubview(addressTextField)
         scrollView.addSubview(cityStateZipTextField)
         scrollView.addSubview(identifierLabel)
@@ -250,7 +228,6 @@ class ShopDetailViewController: UIViewController, UITextFieldDelegate, UNUserNot
         nameTextField.delegate = self
         typeTextField.delegate = self
         hasChuteBagTextField.delegate = self
-        scheduleTextField.delegate = self
         addressTextField.delegate = self
         cityStateZipTextField.delegate = self
         
@@ -275,12 +252,7 @@ class ShopDetailViewController: UIViewController, UITextFieldDelegate, UNUserNot
         chuteImageView.widthAnchor.constraint(equalToConstant: 80.0).isActive = true
         chuteImageView.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
         
-        sizeImageLabel.topAnchor.constraint(equalTo: chuteImageView.bottomAnchor, constant: 20.0).isActive = true
-        sizeImageLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        sizeImageLabel.widthAnchor.constraint(equalToConstant: view.frame.size.width).isActive = true
-        sizeImageLabel.heightAnchor.constraint(equalToConstant: 17.0).isActive = true
-        
-        timeStampLabel.topAnchor.constraint(equalTo: sizeImageLabel.bottomAnchor, constant: 30).isActive = true
+        timeStampLabel.topAnchor.constraint(equalTo: chuteImageView.bottomAnchor, constant: 30).isActive = true
         timeStampLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         timeStampLabel.widthAnchor.constraint(equalToConstant: view.frame.size.width).isActive = true
         timeStampLabel.heightAnchor.constraint(equalToConstant: 17.0).isActive = true
@@ -310,12 +282,7 @@ class ShopDetailViewController: UIViewController, UITextFieldDelegate, UNUserNot
         hasChuteBagTextField.widthAnchor.constraint(equalToConstant: 200.0).isActive = true
         hasChuteBagTextField.heightAnchor.constraint(equalToConstant: 19.0).isActive = true
         
-        scheduleTextField.topAnchor.constraint(equalTo: hasChuteBagTextField.bottomAnchor, constant: 20.0).isActive = true
-        scheduleTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20.0).isActive = true
-        scheduleTextField.widthAnchor.constraint(equalToConstant: 300.0).isActive = true
-        scheduleTextField.heightAnchor.constraint(equalToConstant: 19.0).isActive = true
-        
-        identifierLabel.topAnchor.constraint(equalTo: scheduleTextField.bottomAnchor, constant: 30.0).isActive = true
+        identifierLabel.topAnchor.constraint(equalTo: hasChuteBagTextField.bottomAnchor, constant: 30.0).isActive = true
         identifierLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         identifierLabel.widthAnchor.constraint(equalToConstant: 350.0).isActive = true
         identifierLabel.heightAnchor.constraint(equalToConstant: 35.0).isActive = true
