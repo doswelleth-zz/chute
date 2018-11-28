@@ -23,7 +23,6 @@
 		491F6E65215DE10100AECA84 /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491F6E64215DE10100AECA84 /* KeychainPasswordItem.swift */; };
 		491F6E68215DE19200AECA84 /* TouchID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491F6E67215DE19200AECA84 /* TouchID.swift */; };
 		492E7C0E215EBCB900255A5C /* Chute.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 492E7C0C215EBCB900255A5C /* Chute.xcdatamodeld */; };
-		492E7C122160235D00255A5C /* SubscribeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492E7C112160235D00255A5C /* SubscribeViewController.swift */; };
 		4976528821A3C95500E19308 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4976528721A3C95500E19308 /* InfoViewController.swift */; };
 		49B413ED21A3C68A00FC224C /* OrdersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B413EC21A3C68A00FC224C /* OrdersCell.swift */; };
 		49B413EF21A3C70F00FC224C /* OrdersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B413EE21A3C70F00FC224C /* OrdersController.swift */; };
@@ -53,7 +52,6 @@
 		491F6E64215DE10100AECA84 /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
 		491F6E67215DE19200AECA84 /* TouchID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchID.swift; sourceTree = "<group>"; };
 		492E7C0D215EBCB900255A5C /* Chute.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Chute.xcdatamodel; sourceTree = "<group>"; };
-		492E7C112160235D00255A5C /* SubscribeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeViewController.swift; sourceTree = "<group>"; };
 		4976528721A3C95500E19308 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		49B413EC21A3C68A00FC224C /* OrdersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersCell.swift; sourceTree = "<group>"; };
 		49B413EE21A3C70F00FC224C /* OrdersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersController.swift; sourceTree = "<group>"; };
@@ -101,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				49E131B721AA602F00FAC0B3 /* chute.entitlements */,
+				492E7C0C215EBCB900255A5C /* Chute.xcdatamodeld */,
 				491F6E37215DD7BF00AECA84 /* AppDelegate.swift */,
 				491F6E43215DD7C200AECA84 /* Info.plist */,
 				49D9F9BE2182AF5C00816F35 /* GoogleService-Info.plist */,
@@ -134,7 +133,6 @@
 				4917206721A609FA006C63AE /* ShopViewController.swift */,
 				4909F88721A2B3EE00FBCFC2 /* ShopDetailViewController.swift */,
 				4909F88921A2BBAB00FBCFC2 /* OrdersViewController.swift */,
-				492E7C112160235D00255A5C /* SubscribeViewController.swift */,
 				4976528721A3C95500E19308 /* InfoViewController.swift */,
 			);
 			path = Controllers;
@@ -180,7 +178,6 @@
 			isa = PBXGroup;
 			children = (
 				491F6E5F215DDFAD00AECA84 /* CoreDataStack.swift */,
-				492E7C0C215EBCB900255A5C /* Chute.xcdatamodeld */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -399,7 +396,6 @@
 				491F6E65215DE10100AECA84 /* KeychainPasswordItem.swift in Sources */,
 				491F6E38215DD7BF00AECA84 /* AppDelegate.swift in Sources */,
 				4909F88A21A2BBAB00FBCFC2 /* OrdersViewController.swift in Sources */,
-				492E7C122160235D00255A5C /* SubscribeViewController.swift in Sources */,
 				4917206821A609FA006C63AE /* ShopViewController.swift in Sources */,
 				49B413ED21A3C68A00FC224C /* OrdersCell.swift in Sources */,
 				492E7C0E215EBCB900255A5C /* Chute.xcdatamodeld in Sources */,

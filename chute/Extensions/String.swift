@@ -15,7 +15,7 @@ extension String {
     static var logoLabelText = "chute"
     static var logoLabelFont = "REZ"
     
-    static var logoSubtitleText = "ask me about laundry"
+    static var logoSubtitleText = "clean clothes, clean world"
     
     static var logoImageName = "logo"
     
@@ -41,7 +41,7 @@ extension String {
     
     // Profile
     
-    static var shopButtonTitle = "Shop"
+    static var orderNowButtonTitle = "Order Now"
     static var ordersButtonTitle = "Orders"
     static var subscribeButtonTitle = "Plus"
     static var faqButtonTitle = "FAQ"

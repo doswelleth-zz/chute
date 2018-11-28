@@ -19,15 +19,13 @@ class DashboardViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.shopImage.alpha = 0
+        self.orderNowImage.alpha = 0
         self.ordersButton.alpha = 0
-        self.subscribeButton.alpha = 0
         self.faqButton.alpha = 0
         
         UIView.animate(withDuration: 1.0) {
-            self.shopImage.alpha = 1.0
+            self.orderNowImage.alpha = 1.0
             self.ordersButton.alpha = 1.0
-            self.subscribeButton.alpha = 1.0
             self.faqButton.alpha = 1.0
         }
     }
@@ -68,7 +66,7 @@ class DashboardViewController: UIViewController {
         label.text = String.logoSubtitleText
         label.textColor = .black
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight(rawValue: -0.3))
+        label.font = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight(rawValue: -0.3))
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -77,13 +75,13 @@ class DashboardViewController: UIViewController {
         let label = UILabel()
         label.text = String.dashboardTitle
         label.textColor = .lightGray
-        label.textAlignment = .left
+        label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 20.0, weight: UIFont.Weight(rawValue: 1.0))
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    let shopImage: UIImageView = {
+    let orderNowImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "Shop")
         image.contentMode = .scaleAspectFill
@@ -91,20 +89,20 @@ class DashboardViewController: UIViewController {
         return image
     }()
     
-    let shopButton: UIButton = {
+    let orderButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle(String.shopTitle, for: .normal)
+        button.setTitle(String.orderNowButtonTitle, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 5.0
         button.clipsToBounds = true
         button.backgroundColor = Appearance.customBackground
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: UIFont.Weight(rawValue: -0.2))
-        button.addTarget(self, action: #selector(shopButtonTapped(sender:)), for: .touchUpInside)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 17.0, weight: UIFont.Weight(rawValue: -0.2))
+        button.addTarget(self, action: #selector(orderNowButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    @objc private func shopButtonTapped(sender: UIButton) {
+    @objc private func orderNowButtonTapped(sender: UIButton) {
         let vc = ShopViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -124,7 +122,7 @@ class DashboardViewController: UIViewController {
         button.layer.cornerRadius = 5.0
         button.clipsToBounds = true
         button.backgroundColor = Appearance.customBackground
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: UIFont.Weight(rawValue: -0.2))
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 17.0, weight: UIFont.Weight(rawValue: -0.2))
         button.addTarget(self, action: #selector(ordersButtonTapped(sender:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -133,33 +131,6 @@ class DashboardViewController: UIViewController {
     @objc private func ordersButtonTapped(sender: UIButton) {
         let vc = OrdersViewController()
         self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    let subscribeImage: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "Subscribe")
-        image.contentMode = .scaleAspectFill
-        image.translatesAutoresizingMaskIntoConstraints = false
-        return image
-    }()
-    
-    let subscribeButton : UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle(String.subscribeButtonTitle, for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.layer.cornerRadius = 5.0
-        button.clipsToBounds = true
-        button.backgroundColor = Appearance.customBackground
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: UIFont.Weight(rawValue: -0.2))
-        button.addTarget(self, action: #selector(subscribeButtonTapped(sender:)), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    @objc private func subscribeButtonTapped(sender: UIButton) {
-        let vc = SubscribeViewController()
-        self.navigationController?.modalPresentationStyle = .overFullScreen
-        self.present(vc, animated: true, completion: nil)
     }
     
     let faqImage: UIImageView = {
@@ -177,7 +148,7 @@ class DashboardViewController: UIViewController {
         button.layer.cornerRadius = 5.0
         button.clipsToBounds = true
         button.backgroundColor = Appearance.customBackground
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: UIFont.Weight(rawValue: -0.2))
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 17.0, weight: UIFont.Weight(rawValue: -0.2))
         button.addTarget(self, action: #selector(faqButtonTapped(sender:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -196,12 +167,10 @@ class DashboardViewController: UIViewController {
         view.addSubview(logoSubtitle)
         view.addSubview(dashboardLabel)
         
-        view.addSubview(shopImage)
-        view.addSubview(shopButton)
+        view.addSubview(orderNowImage)
+        view.addSubview(orderButton)
         view.addSubview(ordersImage)
         view.addSubview(ordersButton)
-        view.addSubview(subscribeImage)
-        view.addSubview(subscribeButton)
         view.addSubview(faqImage)
         view.addSubview(faqButton)
         
@@ -216,19 +185,19 @@ class DashboardViewController: UIViewController {
         logoSubtitle.heightAnchor.constraint(equalToConstant: 21).isActive = true
         
         dashboardLabel.topAnchor.constraint(equalTo: logoSubtitle.bottomAnchor, constant: 40).isActive = true
-        dashboardLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 42.0).isActive = true
-        dashboardLabel.widthAnchor.constraint(equalToConstant: 200.0).isActive = true
+        dashboardLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        dashboardLabel.widthAnchor.constraint(equalToConstant: view.frame.size.width).isActive = true
         dashboardLabel.heightAnchor.constraint(equalToConstant: 22.0).isActive = true
         
-        shopImage.topAnchor.constraint(equalTo: dashboardLabel.bottomAnchor, constant: 30.0).isActive = true
-        shopImage.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 50.0).isActive = true
-        shopImage.widthAnchor.constraint(equalToConstant: 75.0).isActive = true
-        shopImage.heightAnchor.constraint(equalToConstant: 75.0).isActive = true
+        orderNowImage.topAnchor.constraint(equalTo: dashboardLabel.bottomAnchor, constant: 30.0).isActive = true
+        orderNowImage.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 50.0).isActive = true
+        orderNowImage.widthAnchor.constraint(equalToConstant: 75.0).isActive = true
+        orderNowImage.heightAnchor.constraint(equalToConstant: 75.0).isActive = true
         
-        shopButton.topAnchor.constraint(equalTo: shopImage.bottomAnchor, constant: 10.0).isActive = true
-        shopButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 40.0).isActive = true
-        shopButton.widthAnchor.constraint(equalToConstant: 100.0).isActive = true
-        shopButton.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
+        orderButton.topAnchor.constraint(equalTo: orderNowImage.bottomAnchor, constant: 10.0).isActive = true
+        orderButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 40.0).isActive = true
+        orderButton.widthAnchor.constraint(equalToConstant: 100.0).isActive = true
+        orderButton.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
         
         ordersImage.topAnchor.constraint(equalTo: dashboardLabel.bottomAnchor, constant: 30.0).isActive = true
         ordersImage.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40.0).isActive = true
@@ -240,23 +209,13 @@ class DashboardViewController: UIViewController {
         ordersButton.widthAnchor.constraint(equalToConstant: 100.0).isActive = true
         ordersButton.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
         
-        subscribeImage.topAnchor.constraint(equalTo: shopButton.bottomAnchor, constant: 30.0).isActive = true
-        subscribeImage.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 50.0).isActive = true
-        subscribeImage.widthAnchor.constraint(equalToConstant: 75.0).isActive = true
-        subscribeImage.heightAnchor.constraint(equalToConstant: 75.0).isActive = true
-        
-        subscribeButton.topAnchor.constraint(equalTo: subscribeImage.bottomAnchor, constant: 10.0).isActive = true
-        subscribeButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 40).isActive = true
-        subscribeButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        subscribeButton.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
-        
         faqImage.topAnchor.constraint(equalTo: ordersButton.bottomAnchor, constant: 30.0).isActive = true
-        faqImage.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40.0).isActive = true
+        faqImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         faqImage.widthAnchor.constraint(equalToConstant: 75.0).isActive = true
         faqImage.heightAnchor.constraint(equalToConstant: 75.0).isActive = true
         
         faqButton.topAnchor.constraint(equalTo: faqImage.bottomAnchor, constant: 10.0).isActive = true
-        faqButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30.0).isActive = true
+        faqButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         faqButton.widthAnchor.constraint(equalToConstant: 100.0).isActive = true
         faqButton.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
     }

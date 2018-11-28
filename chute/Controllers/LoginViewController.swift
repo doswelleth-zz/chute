@@ -72,6 +72,14 @@ class LoginViewController: UIViewController {
         return label
     }()
     
+    let truckImage: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "Truck")
+        image.contentMode = .scaleAspectFill
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
+    
     let usernameTextField: UITextField = {
         let textField = UITextField()
         textField.textColor = .black
@@ -260,41 +268,46 @@ class LoginViewController: UIViewController {
         
         view.addSubview(logoLabel)
         view.addSubview(logoSubtitle)
-        
+        view.addSubview(truckImage)
         view.addSubview(usernameTextField)
         view.addSubview(passwordTextField)
         view.addSubview(signInButton)
         view.addSubview(touchIDButton)
     
         logoLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        logoLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 75).isActive = true
+        logoLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 75.0).isActive = true
         logoLabel.widthAnchor.constraint(equalToConstant: view.frame.size.width).isActive = true
-        logoLabel.heightAnchor.constraint(equalToConstant: 76).isActive = true
+        logoLabel.heightAnchor.constraint(equalToConstant: 76.0).isActive = true
         
         logoSubtitle.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        logoSubtitle.topAnchor.constraint(equalTo: logoLabel.bottomAnchor, constant: 10).isActive = true
+        logoSubtitle.topAnchor.constraint(equalTo: logoLabel.bottomAnchor, constant: 10.0).isActive = true
         logoSubtitle.widthAnchor.constraint(equalToConstant: view.frame.size.width).isActive = true
-        logoSubtitle.heightAnchor.constraint(equalToConstant: 21).isActive = true
+        logoSubtitle.heightAnchor.constraint(equalToConstant: 21.0).isActive = true
         
-        usernameTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30).isActive = true
-        usernameTextField.topAnchor.constraint(equalTo: logoSubtitle.bottomAnchor, constant: 50).isActive = true
-        usernameTextField.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        usernameTextField.heightAnchor.constraint(equalToConstant: 26).isActive = true
+        truckImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        truckImage.topAnchor.constraint(equalTo: logoSubtitle.bottomAnchor, constant: 20.0).isActive = true
+        truckImage.widthAnchor.constraint(equalToConstant: 100.0).isActive = true
+        truckImage.heightAnchor.constraint(equalToConstant: 100.0).isActive = true
         
-        passwordTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30).isActive = true
+        usernameTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30.0).isActive = true
+        usernameTextField.topAnchor.constraint(equalTo: truckImage.bottomAnchor, constant: 30.0).isActive = true
+        usernameTextField.widthAnchor.constraint(equalToConstant: 300.0).isActive = true
+        usernameTextField.heightAnchor.constraint(equalToConstant: 26.0).isActive = true
+        
+        passwordTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30.0).isActive = true
         passwordTextField.topAnchor.constraint(equalTo: usernameTextField.bottomAnchor, constant: 30).isActive = true
-        passwordTextField.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        passwordTextField.heightAnchor.constraint(equalToConstant: 26).isActive = true
+        passwordTextField.widthAnchor.constraint(equalToConstant: 300.0).isActive = true
+        passwordTextField.heightAnchor.constraint(equalToConstant: 26.0).isActive = true
         
         signInButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        signInButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 50).isActive = true
-        signInButton.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        signInButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        signInButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 50.0).isActive = true
+        signInButton.widthAnchor.constraint(equalToConstant: 300.0).isActive = true
+        signInButton.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
         
         touchIDButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        touchIDButton.topAnchor.constraint(equalTo: signInButton.bottomAnchor, constant: 30).isActive = true
-        touchIDButton.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        touchIDButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        touchIDButton.topAnchor.constraint(equalTo: signInButton.bottomAnchor, constant: 30.0).isActive = true
+        touchIDButton.widthAnchor.constraint(equalToConstant: 300.0).isActive = true
+        touchIDButton.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
     }
     
     // Touch ID - Private
