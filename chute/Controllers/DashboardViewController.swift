@@ -156,8 +156,7 @@ class DashboardViewController: UIViewController {
     
     @objc private func faqButtonTapped(sender: UIButton) {
         let vc = InfoViewController()
-        self.modalPresentationStyle = .overCurrentContext
-        self.present(vc, animated: true, completion: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     private func setUpViews() {

@@ -103,7 +103,7 @@ class OrdersController {
         
         let order = Order(name: name, address: address, cityStateZip: cityStateZip, type: type, hasChuteBag: hasChuteBag, identifier: identifier, timestamp: timestamp)
         
-        // Pass in completion of createFirebasePickUp() into the completion closure of pull() - this will forward the completion of put() to the caller of createFirebasePickUp() so the error can be handled there.
+        // Pass in completion of createFirebaseOrder() into the completion closure of pull() - this will forward the completion of put() to the caller of createFirebaseOrder() so the error can be handled there.
         
         put(order: order, completion: completion)
     }

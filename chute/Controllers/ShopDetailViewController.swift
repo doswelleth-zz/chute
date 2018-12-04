@@ -16,6 +16,18 @@ class ShopDetailViewController: UIViewController, UITextFieldDelegate, UNUserNot
         
         setUpViews()
         hideKeyboardWhenTappedAround()
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: .alert) { (success, error) in
+            if let error = error {
+                NSLog("Notification request denied by user: \(error)")
+            }
+        }
+        UNUserNotificationCenter.current().delegate = self
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        completionHandler([.alert, .sound])
     }
     
     var order: Order?

@@ -8,6 +8,8 @@
 
 import UIKit
 
+private let buttonColor = UIColor(red: 135.0/255.0, green: 206.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+
 class InfoViewController: UIViewController {
     
     override func viewDidLoad() {
@@ -30,6 +32,21 @@ class InfoViewController: UIViewController {
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGesture(gesture:)))
         swipeDown.direction = .down
         self.view.addGestureRecognizer(swipeDown)
+    }
+    
+    let backButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle(String.backButton, for: .normal)
+        button.setTitleColor(buttonColor, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
+        button.adjustsImageWhenHighlighted = false
+        button.addTarget(self, action: #selector(backBarButtonTapped(sender:)), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    @objc private func backBarButtonTapped(sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     let chuteImageView: UIImageView = {
@@ -79,11 +96,17 @@ class InfoViewController: UIViewController {
     func setUpViews() {
         view.backgroundColor = Appearance.lightBackground
 
+        view.addSubview(backButton)
         view.addSubview(chuteImageView)
         view.addSubview(onboardTextView)
         view.addSubview(faqLabel)
         
         onboardTextView.showsVerticalScrollIndicator = false
+        
+        backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 50.0).isActive = true
+        backButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30.0).isActive = true
+        backButton.widthAnchor.constraint(equalToConstant: 60.0).isActive = true
+        backButton.heightAnchor.constraint(equalToConstant: 60.0).isActive = true
         
         chuteImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50.0).isActive = true
         chuteImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true

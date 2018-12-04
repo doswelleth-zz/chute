@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="9Bb-fv-50l">
-                                <rect key="frame" x="94" y="251" width="186" height="164"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="9Bb-fv-50l">
+                                <rect key="frame" x="137" y="283" width="100" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" red="0.52941176469999995" green="0.80784313730000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
@@ -26,10 +26,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" red="0.95034881790000003" green="0.95045732490000001" blue="0.94885684739999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="9Bb-fv-50l" secondAttribute="bottom" constant="252" id="22b-bF-lgy"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9Bb-fv-50l" secondAttribute="trailing" constant="95" id="DgU-oF-ucj"/>
-                            <constraint firstItem="9Bb-fv-50l" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="94" id="bZn-Wm-jTU"/>
-                            <constraint firstItem="9Bb-fv-50l" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="231" id="grw-ON-SYR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="9Bb-fv-50l" secondAttribute="bottom" constant="284" id="22b-bF-lgy"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9Bb-fv-50l" secondAttribute="trailing" constant="138" id="DgU-oF-ucj"/>
+                            <constraint firstItem="9Bb-fv-50l" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="137" id="bZn-Wm-jTU"/>
+                            <constraint firstItem="9Bb-fv-50l" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="263" id="grw-ON-SYR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
